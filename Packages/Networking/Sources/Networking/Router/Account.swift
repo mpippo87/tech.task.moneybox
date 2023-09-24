@@ -11,12 +11,12 @@ public extension API {
     enum Account: AppNetworkable {
         case products
         case addMoney(request: OneOffPaymentRequest)
-        
+
         public var request: URLRequest {
             switch self {
             case .products:
                 return getRequest(with: "/investorproducts", httpMethod: .GET)
-            case let .addMoney(request):
+            case .addMoney(let request):
                 return getRequest(with: "/oneoffpayments", encodable: request, httpMethod: .POST)
             }
         }
