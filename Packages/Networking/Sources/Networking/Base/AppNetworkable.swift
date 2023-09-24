@@ -13,7 +13,7 @@ public protocol AppNetworkable {
 }
 
 public extension AppNetworkable {
-    
+
     func getRequest(with path: String, encodable data: some Encodable, httpMethod: RequestType) -> URLRequest {
         var request = getRequest(with: path, httpMethod: httpMethod)
         do {

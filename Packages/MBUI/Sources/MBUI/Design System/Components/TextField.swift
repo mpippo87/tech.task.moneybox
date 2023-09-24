@@ -44,7 +44,7 @@ public final class TextField: UITextField {
 
         translatesAutoresizingMaskIntoConstraints = false
     }
-    
+
     private func configure(style: Style = .unknown) {
         switch style {
         case .email:
