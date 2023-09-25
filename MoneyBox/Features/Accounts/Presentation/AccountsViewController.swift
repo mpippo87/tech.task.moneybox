@@ -34,6 +34,19 @@ final class AccountsViewController: UIViewController, UITableViewDataSource, UIT
 
     var userAccountsData: [(title: String, planValue: String, moneybox: String)] = [] // Your data
 
+    var viewModel: AccountsViewModelProtocol?
+
+    // MARK: - Init
+
+    init(viewModel: AccountsViewModelProtocol?) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
@@ -84,7 +97,7 @@ final class AccountsViewController: UIViewController, UITableViewDataSource, UIT
         ])
 
         // Register the custom cell class
-        tableView.register(AccountTableViewCell.self, forCellReuseIdentifier: "CustomCell")
+        tableView.register(AccountTableViewCell.self, forCellReuseIdentifier: "account-table-view-cell-identifier")
     }
 
     // MARK: - UITableViewDataSource
@@ -94,10 +107,10 @@ final class AccountsViewController: UIViewController, UITableViewDataSource, UIT
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CustomCell", for: indexPath) as! AccountTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "account-table-view-cell-identifier", for: indexPath) as! AccountTableViewCell
 
         let data = userAccountsData[indexPath.row]
-        cell.configure(withTitle: data.title, planValue: data.planValue, moneybox: data.moneybox)
+        cell.configure(title: data.title, planValue: data.planValue, moneybox: data.moneybox)
 
         return cell
     }

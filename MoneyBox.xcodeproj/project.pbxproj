@@ -23,6 +23,8 @@
 		A5B3FA7A2ABC4A3500D27B69 /* Networking in Frameworks */ = {isa = PBXBuildFile; productRef = A5B3FA792ABC4A3500D27B69 /* Networking */; };
 		A5B3FA7C2ABC4A3500D27B69 /* MBUI in Frameworks */ = {isa = PBXBuildFile; productRef = A5B3FA7B2ABC4A3500D27B69 /* MBUI */; };
 		A5C0C7052AC19F4600C7B26E /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C0C7042AC19F4600C7B26E /* KeychainManager.swift */; };
+		A5C0C7072AC1E8F400C7B26E /* AccountsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C0C7062AC1E8F400C7B26E /* AccountsCoordinator.swift */; };
+		A5C0C70B2AC1EDB100C7B26E /* AccountCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C0C70A2AC1EDB100C7B26E /* AccountCoordinator.swift */; };
 		B228EA6B2880B30B00B35F16 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B228EA692880B30B00B35F16 /* LoginViewController.swift */; };
 		B2CA46CC279350880041B3A5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2CA46CB279350880041B3A5 /* AppDelegate.swift */; };
 		B2CA46D52793508A0041B3A5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B2CA46D42793508A0041B3A5 /* Assets.xcassets */; };
@@ -57,6 +59,8 @@
 		A5B3FA742ABC4A2800D27B69 /* Networking */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Networking; path = Packages/Networking; sourceTree = "<group>"; };
 		A5B3FA752ABC4A2900D27B69 /* MBUI */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = MBUI; path = Packages/MBUI; sourceTree = "<group>"; };
 		A5C0C7042AC19F4600C7B26E /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
+		A5C0C7062AC1E8F400C7B26E /* AccountsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsCoordinator.swift; sourceTree = "<group>"; };
+		A5C0C70A2AC1EDB100C7B26E /* AccountCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCoordinator.swift; sourceTree = "<group>"; };
 		B228EA692880B30B00B35F16 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B2CA46C8279350880041B3A5 /* MoneyBox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoneyBox.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2CA46CB279350880041B3A5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -102,8 +106,7 @@
 		A520226F2ABCAD6700EB97A3 /* Accounts */ = {
 			isa = PBXGroup;
 			children = (
-				A52022702ABCADB700EB97A3 /* AccountsViewModel.swift */,
-				A520226D2ABCAD5700EB97A3 /* AccountsViewController.swift */,
+				A5C0C7082AC1E8FD00C7B26E /* Presentation */,
 			);
 			path = Accounts;
 			sourceTree = "<group>";
@@ -111,8 +114,7 @@
 		A52022742ABCADE100EB97A3 /* Account */ = {
 			isa = PBXGroup;
 			children = (
-				A52022752ABCADF200EB97A3 /* AccountViewModel.swift */,
-				A52022722ABCADDB00EB97A3 /* AccountViewController.swift */,
+				A5C0C7092AC1EDA100C7B26E /* Presentation */,
 			);
 			path = Account;
 			sourceTree = "<group>";
@@ -171,6 +173,26 @@
 				A52022692ABCA12200EB97A3 /* Presentation */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		A5C0C7082AC1E8FD00C7B26E /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				A5C0C7062AC1E8F400C7B26E /* AccountsCoordinator.swift */,
+				A52022702ABCADB700EB97A3 /* AccountsViewModel.swift */,
+				A520226D2ABCAD5700EB97A3 /* AccountsViewController.swift */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		A5C0C7092AC1EDA100C7B26E /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				A5C0C70A2AC1EDB100C7B26E /* AccountCoordinator.swift */,
+				A52022752ABCADF200EB97A3 /* AccountViewModel.swift */,
+				A52022722ABCADDB00EB97A3 /* AccountViewController.swift */,
+			);
+			path = Presentation;
 			sourceTree = "<group>";
 		};
 		B2CA46BF279350880041B3A5 = {
@@ -345,6 +367,7 @@
 				B2CA46CC279350880041B3A5 /* AppDelegate.swift in Sources */,
 				B228EA6B2880B30B00B35F16 /* LoginViewController.swift in Sources */,
 				A55D0FCF2AC0A411001AD3B1 /* LoginCoordinator.swift in Sources */,
+				A5C0C70B2AC1EDB100C7B26E /* AccountCoordinator.swift in Sources */,
 				A52022762ABCADF200EB97A3 /* AccountViewModel.swift in Sources */,
 				A52022732ABCADDB00EB97A3 /* AccountViewController.swift in Sources */,
 				A520227B2ABCDCC500EB97A3 /* AuthService.swift in Sources */,
@@ -354,6 +377,7 @@
 				A52022682ABCA0F500EB97A3 /* LoginViewModel.swift in Sources */,
 				A52022712ABCADB700EB97A3 /* AccountsViewModel.swift in Sources */,
 				A520226C2ABCA71700EB97A3 /* LoginUseCase.swift in Sources */,
+				A5C0C7072AC1E8F400C7B26E /* AccountsCoordinator.swift in Sources */,
 				A5C0C7052AC19F4600C7B26E /* KeychainManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

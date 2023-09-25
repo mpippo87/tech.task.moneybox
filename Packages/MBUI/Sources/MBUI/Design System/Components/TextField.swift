@@ -27,7 +27,7 @@ public final class TextField: UITextField {
 
     // MARK: - Methods
 
-    private func setupUI() {
+    private func configure(style: Style = .unknown) {
         borderStyle = .roundedRect
         layer.cornerRadius = 8
         layer.borderColor = UIColor.color1.cgColor
@@ -43,9 +43,7 @@ public final class TextField: UITextField {
         backgroundColor = .color2
 
         translatesAutoresizingMaskIntoConstraints = false
-    }
 
-    private func configure(style: Style = .unknown) {
         switch style {
         case .email:
             keyboardType = .emailAddress

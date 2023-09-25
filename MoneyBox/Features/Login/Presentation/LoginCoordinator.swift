@@ -35,7 +35,8 @@ class LoginCoordinator: Coordinator {
         self.loginViewController = loginViewController
     }
 
-    func goToLogin() {}
-
-    func goToAccounts() {}
+    func goToAccounts() {
+        let accountsCoordinator = AccountsCoordinator(navigationController: navigationController)
+        start(coordinator: accountsCoordinator)
+    }
 }
