@@ -19,7 +19,7 @@ public struct LoginResponse: Decodable {
     }
 
     public struct Session: Decodable {
-        let bearerToken: String
+        public let bearerToken: String
 
         enum CodingKeys: String, CodingKey {
             case bearerToken = "BearerToken"

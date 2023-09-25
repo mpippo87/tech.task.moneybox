@@ -25,6 +25,10 @@
 		A5C0C7052AC19F4600C7B26E /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C0C7042AC19F4600C7B26E /* KeychainManager.swift */; };
 		A5C0C7072AC1E8F400C7B26E /* AccountsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C0C7062AC1E8F400C7B26E /* AccountsCoordinator.swift */; };
 		A5C0C70B2AC1EDB100C7B26E /* AccountCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C0C70A2AC1EDB100C7B26E /* AccountCoordinator.swift */; };
+		A5C0C70D2AC1F56600C7B26E /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C0C70C2AC1F56600C7B26E /* Account.swift */; };
+		A5C0C7112AC1F6C200C7B26E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C0C7102AC1F6C200C7B26E /* User.swift */; };
+		A5C0C7152AC1F84900C7B26E /* AccountsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C0C7142AC1F84900C7B26E /* AccountsUseCase.swift */; };
+		A5C0C7182AC1FAA600C7B26E /* AccountsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C0C7172AC1FAA600C7B26E /* AccountsService.swift */; };
 		B228EA6B2880B30B00B35F16 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B228EA692880B30B00B35F16 /* LoginViewController.swift */; };
 		B2CA46CC279350880041B3A5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2CA46CB279350880041B3A5 /* AppDelegate.swift */; };
 		B2CA46D52793508A0041B3A5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B2CA46D42793508A0041B3A5 /* Assets.xcassets */; };
@@ -61,6 +65,10 @@
 		A5C0C7042AC19F4600C7B26E /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
 		A5C0C7062AC1E8F400C7B26E /* AccountsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsCoordinator.swift; sourceTree = "<group>"; };
 		A5C0C70A2AC1EDB100C7B26E /* AccountCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCoordinator.swift; sourceTree = "<group>"; };
+		A5C0C70C2AC1F56600C7B26E /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
+		A5C0C7102AC1F6C200C7B26E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		A5C0C7142AC1F84900C7B26E /* AccountsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsUseCase.swift; sourceTree = "<group>"; };
+		A5C0C7172AC1FAA600C7B26E /* AccountsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsService.swift; sourceTree = "<group>"; };
 		B228EA692880B30B00B35F16 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B2CA46C8279350880041B3A5 /* MoneyBox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoneyBox.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2CA46CB279350880041B3A5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -106,6 +114,8 @@
 		A520226F2ABCAD6700EB97A3 /* Accounts */ = {
 			isa = PBXGroup;
 			children = (
+				A5C0C7192AC1FAA900C7B26E /* Data */,
+				A5C0C70F2AC1F58300C7B26E /* Domain */,
 				A5C0C7082AC1E8FD00C7B26E /* Presentation */,
 			);
 			path = Accounts;
@@ -122,7 +132,8 @@
 		A52022792ABCDC4600EB97A3 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
-				A520226B2ABCA71700EB97A3 /* LoginUseCase.swift */,
+				A5C0C7122AC1F6CA00C7B26E /* Entities */,
+				A5C0C7132AC1F6D100C7B26E /* UseCases */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -193,6 +204,55 @@
 				A52022722ABCADDB00EB97A3 /* AccountViewController.swift */,
 			);
 			path = Presentation;
+			sourceTree = "<group>";
+		};
+		A5C0C70E2AC1F57700C7B26E /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				A5C0C70C2AC1F56600C7B26E /* Account.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		A5C0C70F2AC1F58300C7B26E /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				A5C0C70E2AC1F57700C7B26E /* Entities */,
+				A5C0C7162AC1F84C00C7B26E /* UseCases */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		A5C0C7122AC1F6CA00C7B26E /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				A5C0C7102AC1F6C200C7B26E /* User.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		A5C0C7132AC1F6D100C7B26E /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				A520226B2ABCA71700EB97A3 /* LoginUseCase.swift */,
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
+		A5C0C7162AC1F84C00C7B26E /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				A5C0C7142AC1F84900C7B26E /* AccountsUseCase.swift */,
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
+		A5C0C7192AC1FAA900C7B26E /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				A5C0C7172AC1FAA600C7B26E /* AccountsService.swift */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 		B2CA46BF279350880041B3A5 = {
@@ -370,11 +430,15 @@
 				A5C0C70B2AC1EDB100C7B26E /* AccountCoordinator.swift in Sources */,
 				A52022762ABCADF200EB97A3 /* AccountViewModel.swift in Sources */,
 				A52022732ABCADDB00EB97A3 /* AccountViewController.swift in Sources */,
+				A5C0C7152AC1F84900C7B26E /* AccountsUseCase.swift in Sources */,
 				A520227B2ABCDCC500EB97A3 /* AuthService.swift in Sources */,
+				A5C0C7182AC1FAA600C7B26E /* AccountsService.swift in Sources */,
 				A520226E2ABCAD5700EB97A3 /* AccountsViewController.swift in Sources */,
 				A55D0FD62AC0A93B001AD3B1 /* SceneDelegate.swift in Sources */,
 				A55D0FD42AC0A708001AD3B1 /* Coordinator.swift in Sources */,
+				A5C0C70D2AC1F56600C7B26E /* Account.swift in Sources */,
 				A52022682ABCA0F500EB97A3 /* LoginViewModel.swift in Sources */,
+				A5C0C7112AC1F6C200C7B26E /* User.swift in Sources */,
 				A52022712ABCADB700EB97A3 /* AccountsViewModel.swift in Sources */,
 				A520226C2ABCA71700EB97A3 /* LoginUseCase.swift in Sources */,
 				A5C0C7072AC1E8F400C7B26E /* AccountsCoordinator.swift in Sources */,

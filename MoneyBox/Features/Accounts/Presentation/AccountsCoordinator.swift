@@ -29,7 +29,10 @@ class AccountsCoordinator: Coordinator {
     // MARK: - Lifecycle
 
     override func start() {
-        let accountsViewController = AccountsViewController(viewModel: AccountsViewModel(coordinator: self))
+        let accountsViewController = AccountsViewController(viewModel: AccountsViewModel(
+            coordinator: self,
+            user: User(name: "Test")
+        ))
         navigationController.setViewControllers([accountsViewController], animated: true)
         self.accountsViewController = accountsViewController
     }

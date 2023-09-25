@@ -19,21 +19,15 @@ final class LoginUseCase: LoginUseCaseProtocol {
 
     // MARK: - Init
 
-    init(
-        authService: AuthServiceProtocol
-    ) {
+    init(authService: AuthServiceProtocol) {
         self.authService = authService
     }
 
     // MARK: - AuthStore
 
     func login(email: String, password: String) async -> Bool {
-        do {
-            let loginResponse = try? await authService.authenticate(with: email, password: password)
-            return loginResponse?.session.bearerToken != nil
-        } catch {
-            return false
-        }
+        let loginResponse = try? await authService.authenticate(with: email, password: password)
+        return loginResponse?.session.bearerToken != nil
     }
 }
 

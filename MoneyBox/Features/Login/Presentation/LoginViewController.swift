@@ -84,6 +84,11 @@ final class LoginViewController: UIViewController {
         passwordTextField.text = "P455word12"
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        loginButtonTapped()
+    }
+
     // MARK: - Actions
 
     @objc func loginButtonTapped() {

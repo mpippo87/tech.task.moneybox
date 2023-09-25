@@ -1,9 +1,4 @@
-//
-//  AccountsViewController.swift
-//  MoneyBox
-//
-//  Created by Filippo Minelle on 21/09/2023.
-//
+// AccountsViewController.swift
 
 import MBUI
 import UIKit
@@ -32,8 +27,6 @@ final class AccountsViewController: UIViewController, UITableViewDataSource, UIT
         return tableView
     }()
 
-    var userAccountsData: [(title: String, planValue: String, moneybox: String)] = [] // Your data
-
     var viewModel: AccountsViewModelProtocol?
 
     // MARK: - Init
@@ -51,27 +44,23 @@ final class AccountsViewController: UIViewController, UITableViewDataSource, UIT
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         view.backgroundColor = .white
+        setupUI()
+        nameLabel.text = viewModel?.nameLabelText
+        totalPlanValueLabel.text = viewModel?.totalPlanValueLabelText
 
-        setupTopLabels()
-        setupTableView()
+        Task {
+            await viewModel?.fetchAccounts()
 
-        // Update labels and data
-        nameLabel.text = "Hello {Name}!" // Replace {Name} with the actual user's name
-        totalPlanValueLabel.text = "Total Plan Value: £{total}" // Replace {total} with the actual total value
-
-        // Populate userAccountsData with your data
-        userAccountsData = [
-            ("Account 1", "1000", "500"),
-            ("Account 2", "2000", "1000")
-            // Add more data as needed
-        ]
+            DispatchQueue.main.async { [weak self] in
+                self?.updateUI()
+            }
+        }
     }
 
     // MARK: - UI Setup
 
-    private func setupTopLabels() {
+    private func setupUI() {
         view.addSubview(nameLabel)
         view.addSubview(totalPlanValueLabel)
 
@@ -82,9 +71,8 @@ final class AccountsViewController: UIViewController, UITableViewDataSource, UIT
             totalPlanValueLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 4),
             totalPlanValueLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16)
         ])
-    }
 
-    private func setupTableView() {
+        // Table
         view.addSubview(tableView)
         tableView.dataSource = self
         tableView.delegate = self
@@ -100,18 +88,29 @@ final class AccountsViewController: UIViewController, UITableViewDataSource, UIT
         tableView.register(AccountTableViewCell.self, forCellReuseIdentifier: "account-table-view-cell-identifier")
     }
 
+    private func updateUI() {
+        nameLabel.text = viewModel?.nameLabelText
+        totalPlanValueLabel.text = viewModel?.totalPlanValueLabelText
+        tableView.reloadData()
+    }
+
     // MARK: - UITableViewDataSource
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        userAccountsData.count
+        viewModel?.userAccountsData.count ?? 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "account-table-view-cell-identifier", for: indexPath) as! AccountTableViewCell
 
-        let data = userAccountsData[indexPath.row]
-        cell.configure(title: data.title, planValue: data.planValue, moneybox: data.moneybox)
+        if let account = viewModel?.userAccountsData[indexPath.row] {
+            cell.configure(title: account.title, planValue: String(account.planValue), moneybox: String(account.moneybox))
+        }
 
         return cell
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel?.didSelectAccount(at: indexPath)
     }
 }

@@ -45,7 +45,7 @@ final class AppCoordinator: Coordinator {
     }
 
     func goToAccounts() {
-        print("goToAccounts")
+        print("§ goToAccounts")
         //        loginCoordinator = TabBarCoordinator(navigationController: navigationController, authService: authService)
         //        if let loginCoordinator {
         //            start(coordinator: loginCoordinator)
