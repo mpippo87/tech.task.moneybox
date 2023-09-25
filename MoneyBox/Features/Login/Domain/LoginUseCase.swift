@@ -5,35 +5,63 @@
 //  Created by Filippo Minelle on 21/09/2023.
 //
 
-import Foundation
+import Networking
 
 protocol LoginUseCaseProtocol {
-
-    // typealias Result = Result<Bool, Error> // You can define a custom result type
-
-    func login(username: String, password: String, completion: @escaping (Result<Bool, Error>) -> Void)
+    func login(email: String, password: String) async throws -> Bool
 }
 
 final class LoginUseCase: LoginUseCaseProtocol {
 
-    // You can inject any necessary dependencies here, such as a network service or repository
+    // MARK: - Properties
 
-    func login(username: String, password: String, completion: @escaping (Result<Bool, Error>) -> Void) {
-        // Here, you would typically make a network request or interact with a repository
-        // to perform the login operation.
+    private let authService: AuthServiceProtocol
 
-        // Example:
-        // Authenticate the user using a service or API call.
-        // Handle success and failure cases and provide the result in the completion handler.
+    // MARK: - Init
 
-        // For the sake of the example, let's assume a successful login here.
-        let isAuthenticated = true
-        if isAuthenticated {
-            completion(.success(true))
-        } else {
-            // If login fails, provide an error.
-            let error = NSError(domain: "LoginErrorDomain", code: 1, userInfo: [NSLocalizedDescriptionKey: "Login failed."])
-            completion(.failure(error))
+    init(
+        authService: AuthServiceProtocol
+    ) {
+        self.authService = authService
+    }
+
+    // MARK: - AuthStore
+
+    func login(email: String, password: String) async -> Bool {
+        do {
+            let loginResponse = try? await authService.authenticate(with: email, password: password)
+            return loginResponse?.session.bearerToken != nil
+        } catch {
+            return false
         }
+    }
+}
+
+import Foundation
+
+class AuthDataSource {
+    private let keychainManager: KeychainManager
+
+    init(service: String) {
+        keychainManager = KeychainManager(service: service)
+    }
+
+    // MARK: - Public Methods
+
+    func saveAuthToken(_ token: String, forKey key: String) -> Bool {
+        let dataToSave = token.data(using: .utf8)!
+        return keychainManager.save(data: dataToSave, forKey: key)
+    }
+
+    func loadAuthToken(forKey key: String) -> String? {
+        if let loadedData = keychainManager.load(forKey: key),
+           let loadedString = String(data: loadedData, encoding: .utf8) {
+            return loadedString
+        }
+        return nil
+    }
+
+    func deleteAuthToken(forKey key: String) -> Bool {
+        keychainManager.delete(forKey: key)
     }
 }

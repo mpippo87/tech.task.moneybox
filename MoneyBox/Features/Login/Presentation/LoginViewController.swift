@@ -28,13 +28,13 @@ final class LoginViewController: UIViewController {
                                             target: self,
                                             action: #selector(loginButtonTapped))
 
-    weak var viewModel: LoginViewModel?
+    var viewModel: LoginViewModel?
 
     // MARK: - Init
 
     init(viewModel: LoginViewModel?) {
-        super.init(nibName: nil, bundle: nil)
         self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -45,49 +45,51 @@ final class LoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupUI()
+    }
 
-        // Create the main view
-        let mainView = UIView()
-        mainView.backgroundColor = .color2
-        view = mainView
-
-        // Add UI elements to the main view
-        mainView.addSubview(logoImage)
-        mainView.addSubview(usernameTextField)
-        mainView.addSubview(passwordTextField)
-        mainView.addSubview(loginButton)
+    private func setupUI() {
+        view.backgroundColor = .color2
+        view.addSubview(logoImage)
+        view.addSubview(usernameTextField)
+        view.addSubview(passwordTextField)
+        view.addSubview(loginButton)
 
         // Define constraints
         NSLayoutConstraint.activate([
-            logoImage.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: Padding.l),
-            logoImage.centerXAnchor.constraint(equalTo: mainView.centerXAnchor),
+            logoImage.topAnchor.constraint(equalTo: view.topAnchor, constant: Padding.xl),
+            logoImage.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Padding.m),
+            logoImage.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Padding.m),
+            logoImage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             logoImage.heightAnchor.constraint(equalToConstant: 50),
 
             usernameTextField.topAnchor.constraint(equalTo: logoImage.bottomAnchor, constant: Padding.l),
-            usernameTextField.leadingAnchor.constraint(equalTo: mainView.leadingAnchor, constant: Padding.m),
-            usernameTextField.trailingAnchor.constraint(equalTo: mainView.trailingAnchor, constant: -Padding.m),
+            usernameTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Padding.m),
+            usernameTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Padding.m),
 
             passwordTextField.topAnchor.constraint(equalTo: usernameTextField.bottomAnchor, constant: Padding.s),
-            passwordTextField.leadingAnchor.constraint(equalTo: mainView.leadingAnchor, constant: Padding.m),
-            passwordTextField.trailingAnchor.constraint(equalTo: mainView.trailingAnchor, constant: -Padding.m),
+            passwordTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Padding.m),
+            passwordTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Padding.m),
 
             loginButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: Padding.m),
-            loginButton.leadingAnchor.constraint(equalTo: mainView.leadingAnchor, constant: Padding.m),
-            loginButton.trailingAnchor.constraint(equalTo: mainView.trailingAnchor, constant: -Padding.m)
+            loginButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Padding.m),
+            loginButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Padding.m)
         ])
     }
 
-    @objc func loginButtonTapped() {
-        if let username = usernameTextField.text,
-           let password = passwordTextField.text {
-            viewModel?.login(username: username, password: password)
+    // TODO: To remove
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        usernameTextField.text = "test+ios2@moneyboxapp.com"
+        passwordTextField.text = "P455word12"
+    }
 
-            if viewModel?.login(username: username, password: password) == true {
-                let accountsViewController = AccountsViewController()
-                navigationController?.pushViewController(accountsViewController, animated: true)
-            } else {
-                // Handle login failure (e.g., show an alert)
-            }
+    // MARK: - Actions
+
+    @objc func loginButtonTapped() {
+        if let email = usernameTextField.text,
+           let password = passwordTextField.text {
+            viewModel?.login(email: email, password: password)
         }
     }
 }

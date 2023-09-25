@@ -6,17 +6,34 @@
 //
 
 import Foundation
+import Networking
+
+protocol LoginViewModelProtocol {}
 
 final class LoginViewModel {
 
     // MARK: - Parameters
 
+    private weak var coordinator: LoginCoordinator?
+    private let loginUseCase: LoginUseCase
+
     // MARK: - Init
+
+    init(
+        coordinator: LoginCoordinator? = nil,
+        usecase: LoginUseCase = LoginUseCase(authService: AuthService(authDataSource: DataProvider()))
+    ) {
+        self.coordinator = coordinator
+        loginUseCase = usecase
+    }
 
     // MARK: - Methods
 
-    func login(username: String, password: String) -> Bool {
-        print("username: \(username), password: \(password)")
-        return true
+    func login(email: String, password: String) {
+        Task {
+            if await loginUseCase.login(email: email, password: password) {
+                await coordinator?.goToAccounts()
+            }
+        }
     }
 }
