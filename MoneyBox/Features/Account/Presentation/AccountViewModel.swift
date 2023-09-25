@@ -8,32 +8,43 @@
 import Foundation
 import Networking
 
-protocol AccountViewModelProtocol {}
+protocol AccountViewModelProtocol {
+    var accountTitle: String { get }
+    var planValue: String { get }
+    var moneybox: String { get }
+}
 
 final class AccountViewModel: AccountViewModelProtocol {
 
     // MARK: - Parameters
 
     private weak var coordinator: AccountCoordinator?
-    private let loginUseCase: LoginUseCase
+    private let account: Account
+
+    // MARK: - Computed Properties
+
+    var accountTitle: String {
+        account.title
+    }
+
+    var planValue: String {
+        String(account.planValue)
+    }
+
+    var moneybox: String {
+        String(account.moneybox)
+    }
 
     // MARK: - Init
 
     init(
         coordinator: AccountCoordinator? = nil,
-        usecase: LoginUseCase = LoginUseCase(authService: AuthService(authDataSource: DataProvider()))
+        account: Account
     ) {
         self.coordinator = coordinator
-        loginUseCase = usecase
+        self.account = account
     }
 
     // MARK: - Methods
 
-//    func login(email: String, password: String) {
-//        Task {
-//            if await loginUseCase.login(email: email, password: password) {
-//                await coordinator?.goToAccounts()
-//            }
-//        }
-//    }
 }

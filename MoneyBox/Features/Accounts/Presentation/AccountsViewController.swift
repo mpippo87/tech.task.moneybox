@@ -46,12 +46,9 @@ final class AccountsViewController: UIViewController, UITableViewDataSource, UIT
         super.viewDidLoad()
         view.backgroundColor = .white
         setupUI()
-        nameLabel.text = viewModel?.nameLabelText
-        totalPlanValueLabel.text = viewModel?.totalPlanValueLabelText
 
         Task {
             await viewModel?.fetchAccounts()
-
             DispatchQueue.main.async { [weak self] in
                 self?.updateUI()
             }
@@ -85,7 +82,7 @@ final class AccountsViewController: UIViewController, UITableViewDataSource, UIT
         ])
 
         // Register the custom cell class
-        tableView.register(AccountTableViewCell.self, forCellReuseIdentifier: "account-table-view-cell-identifier")
+        tableView.register(AccountTableViewCell.self, forCellReuseIdentifier: AccountTableViewCell.reusableIdentifier)
     }
 
     private func updateUI() {
@@ -101,7 +98,7 @@ final class AccountsViewController: UIViewController, UITableViewDataSource, UIT
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "account-table-view-cell-identifier", for: indexPath) as! AccountTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: AccountTableViewCell.reusableIdentifier, for: indexPath) as! AccountTableViewCell
 
         if let account = viewModel?.userAccountsData[indexPath.row] {
             cell.configure(title: account.title, planValue: String(account.planValue), moneybox: String(account.moneybox))

@@ -8,7 +8,7 @@
 import Networking
 
 protocol LoginUseCaseProtocol {
-    func login(email: String, password: String) async throws -> Bool
+    func login(email: String, password: String) async throws -> User?
 }
 
 final class LoginUseCase: LoginUseCaseProtocol {
@@ -25,9 +25,12 @@ final class LoginUseCase: LoginUseCaseProtocol {
 
     // MARK: - AuthStore
 
-    func login(email: String, password: String) async -> Bool {
-        let loginResponse = try? await authService.authenticate(with: email, password: password)
-        return loginResponse?.session.bearerToken != nil
+    func login(email: String, password: String) async throws -> User? {
+        guard let user = try? await authService.authenticate(with: email, password: password).user,
+              let name = user.firstName, let surname = user.lastName else {
+            return nil
+        }
+        return User(name: name, surname: surname)
     }
 }
 

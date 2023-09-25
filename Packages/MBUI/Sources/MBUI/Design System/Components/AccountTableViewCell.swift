@@ -9,6 +9,10 @@ import UIKit
 
 public final class AccountTableViewCell: UITableViewCell {
 
+    // MARK: - Types
+
+    public static let reusableIdentifier = "account-table-view-cell-identifier"
+
     // MARK: - Properties
 
     let titleLabel: UILabel = {

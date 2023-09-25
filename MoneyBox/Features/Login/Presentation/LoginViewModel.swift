@@ -31,8 +31,8 @@ final class LoginViewModel {
 
     func login(email: String, password: String) {
         Task {
-            if await loginUseCase.login(email: email, password: password) {
-                await coordinator?.goToAccounts()
+            if let user = try? await loginUseCase.login(email: email, password: password) {
+                await coordinator?.goToAccounts(user)
             }
         }
     }

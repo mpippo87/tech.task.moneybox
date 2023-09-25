@@ -14,28 +14,29 @@ class AccountsCoordinator: Coordinator {
 
     // private let authService: AuthServiceProtocol
     var accountsViewController: UIViewController?
+    private let user: User
 
     // MARK: - Init
 
     init(
         navigationController: UINavigationController,
-        boolean: Bool = false
+        user: User
         // authService: AuthServiceProtocol = AuthService()
     ) {
-        // self.authService = authService
+        self.user = user
         super.init(navigationController: navigationController)
     }
 
     // MARK: - Lifecycle
 
     override func start() {
-        let accountsViewController = AccountsViewController(viewModel: AccountsViewModel(
-            coordinator: self,
-            user: User(name: "Test")
-        ))
+        let accountsViewController = AccountsViewController(viewModel: AccountsViewModel(coordinator: self, user: user))
         navigationController.setViewControllers([accountsViewController], animated: true)
         self.accountsViewController = accountsViewController
     }
 
-    func goToAccount() {}
+    func goToAccount(_ account: Account) {
+        let accountCoordinator = AccountCoordinator(navigationController: navigationController, account: account)
+        start(coordinator: accountCoordinator)
+    }
 }

@@ -8,31 +8,38 @@
 import MBUI
 import UIKit
 
-final class AccountViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+final class AccountViewController: UIViewController {
 
     // MARK: - Properties
 
-    let nameLabel: UILabel = {
+    let titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.boldSystemFont(ofSize: 16)
         return label
     }()
 
-    let totalPlanValueLabel: UILabel = {
+    let planValueLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 14)
         return label
     }()
 
-    let tableView: UITableView = {
-        let tableView = UITableView()
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        return tableView
+    let moneyboxLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.systemFont(ofSize: 14)
+        return label
     }()
 
-    var userAccountsData: [(title: String, planValue: String, moneybox: String)] = [] // Your data
+    let actionButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Add £10", for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+        return button
+    }()
 
     var viewModel: AccountViewModelProtocol?
 
@@ -52,66 +59,54 @@ final class AccountViewController: UIViewController, UITableViewDataSource, UITa
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = .white
-
-        setupTopLabels()
-        setupTableView()
-
-        // Update labels and data
-        nameLabel.text = "Hello {Name}!" // Replace {Name} with the actual user's name
-        totalPlanValueLabel.text = "Total Plan Value: £{total}" // Replace {total} with the actual total value
-
-        // Populate userAccountsData with your data
-        userAccountsData = [
-            ("Account 1", "1000", "500"),
-            ("Account 2", "2000", "1000")
-            // Add more data as needed
-        ]
+        setupUI()
     }
 
     // MARK: - UI Setup
 
-    private func setupTopLabels() {
-        view.addSubview(nameLabel)
-        view.addSubview(totalPlanValueLabel)
+    private func setupUI() {
+        view.backgroundColor = .white
+
+        setupLabels()
+        setupButton()
+
+        // Update labels
+        titleLabel.text = viewModel?.accountTitle
+        planValueLabel.text = "Plan Value: £\(viewModel?.planValue ?? "")"
+        moneyboxLabel.text = "Moneybox: £\(viewModel?.moneybox ?? "")"
+    }
+
+    // MARK: - Button Action
+
+    @objc private func buttonTapped() {
+        // Handle button tap action here
+    }
+
+    private func setupLabels() {
+        view.addSubview(titleLabel)
+        view.addSubview(planValueLabel)
+        view.addSubview(moneyboxLabel)
 
         NSLayoutConstraint.activate([
-            nameLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
-            nameLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
+            titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
 
-            totalPlanValueLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 4),
-            totalPlanValueLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16)
+            planValueLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 8),
+            planValueLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+
+            moneyboxLabel.topAnchor.constraint(equalTo: planValueLabel.bottomAnchor, constant: 8),
+            moneyboxLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16)
         ])
     }
 
-    private func setupTableView() {
-        view.addSubview(tableView)
-        tableView.dataSource = self
-        tableView.delegate = self
+    private func setupButton() {
+        view.addSubview(actionButton)
 
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: totalPlanValueLabel.bottomAnchor, constant: 16),
-            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            actionButton.topAnchor.constraint(equalTo: moneyboxLabel.bottomAnchor, constant: 16),
+            actionButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
 
-        // Register the custom cell class
-        tableView.register(AccountTableViewCell.self, forCellReuseIdentifier: "account-table-view-cell-identifier")
-    }
-
-    // MARK: - UITableViewDataSource
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        userAccountsData.count
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "account-table-view-cell-identifier", for: indexPath) as! AccountTableViewCell
-
-        let data = userAccountsData[indexPath.row]
-        cell.configure(title: data.title, planValue: data.planValue, moneybox: data.moneybox)
-
-        return cell
+        actionButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
     }
 }

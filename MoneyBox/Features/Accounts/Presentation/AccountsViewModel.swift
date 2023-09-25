@@ -9,8 +9,8 @@ import Foundation
 import Networking
 
 protocol AccountsViewModelProtocol {
-    var totalValue: Double { get }
     var nameLabelText: String { get }
+    var totalValue: Double { get }
     var totalPlanValueLabelText: String { get }
     var userAccountsData: [Account] { get }
 
@@ -22,7 +22,7 @@ final class AccountsViewModel: AccountsViewModelProtocol {
 
     // MARK: - Properties
 
-    private weak var coordinator: AccountsCoordinator?
+    private var coordinator: AccountsCoordinator?
     private let accountsUseCase: AccountsUseCase
     private let user: User
     private var accounts: [Account] = []
@@ -53,8 +53,9 @@ final class AccountsViewModel: AccountsViewModelProtocol {
         user: User
     ) {
         self.coordinator = coordinator
-        self.user = user
         self.accountsUseCase = accountsUseCase
+        self.user = user
+        print("§ coordinator: \(String(describing: self.coordinator))")
     }
 
     // MARK: - Methods
@@ -65,6 +66,7 @@ final class AccountsViewModel: AccountsViewModelProtocol {
 
     func didSelectAccount(at indexPath: IndexPath) {
         let selectedAccount = accounts[indexPath.row]
-        print("§ Selected account: \(selectedAccount)")
+        print("§ selectedAccount: \(selectedAccount), coordinator: \(String(describing: coordinator))")
+        coordinator?.goToAccount(selectedAccount)
     }
 }
