@@ -7,7 +7,7 @@
 
 import UIKit.UIKitCore
 
-protocol CoordinatorProtocol: AnyObject {
+public protocol CoordinatorProtocol: AnyObject {
 
     var parentCoordinator: CoordinatorProtocol? { get set }
     var navigationController: UINavigationController { get set }
@@ -18,17 +18,17 @@ protocol CoordinatorProtocol: AnyObject {
     func removeChildCoordinators(removeAllChilds: Bool)
 }
 
-class Coordinator: NSObject, CoordinatorProtocol {
+public class Coordinator: NSObject, CoordinatorProtocol {
 
     // MARK: - Properties
 
-    weak var parentCoordinator: CoordinatorProtocol?
-    var childCoordinators: [CoordinatorProtocol] = []
-    var navigationController = UINavigationController()
+    public weak var parentCoordinator: CoordinatorProtocol?
+    public var childCoordinators: [CoordinatorProtocol] = []
+    public var navigationController = UINavigationController()
 
     // MARK: - Init
 
-    init(navigationController: UINavigationController) {
+    public init(navigationController: UINavigationController) {
         super.init()
         self.navigationController = navigationController
         self.navigationController.delegate = self
@@ -36,23 +36,23 @@ class Coordinator: NSObject, CoordinatorProtocol {
 
     // MARK: - Lifecycle
 
-    func start() {
+    public func start() {
         fatalError("\(NSStringFromClass(type(of: self))) start() method must be implemented!")
     }
 
-    func start(coordinator: CoordinatorProtocol) {
+    public func start(coordinator: CoordinatorProtocol) {
         childCoordinators.append(coordinator)
         coordinator.parentCoordinator = self
         coordinator.start()
     }
 
-    func end(coordinator: CoordinatorProtocol) {
+    public func end(coordinator: CoordinatorProtocol) {
         if let index = childCoordinators.firstIndex(where: { $0 === coordinator }) {
             childCoordinators.remove(at: index)
         }
     }
 
-    func removeChildCoordinators(removeAllChilds: Bool = false) {
+    public func removeChildCoordinators(removeAllChilds: Bool = false) {
         if removeAllChilds {
             childCoordinators.removeAll()
             return
@@ -63,7 +63,11 @@ class Coordinator: NSObject, CoordinatorProtocol {
 
 extension Coordinator: UINavigationControllerDelegate {
 
-    func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
+    public func navigationController(
+        _ navigationController: UINavigationController,
+        didShow viewController: UIViewController,
+        animated: Bool
+    ) {
         guard let fromViewController = navigationController.transitionCoordinator?.viewController(forKey: .from) else {
             return
         }
