@@ -33,13 +33,10 @@ final class AccountViewController: UIViewController {
         return label
     }()
 
-    let actionButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Add £10", for: .normal)
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
-        return button
-    }()
+    private let addButton: Button = .init(title: "Add £10",
+                                          style: .secondary,
+                                          target: self,
+                                          action: #selector(addButtonTapped))
 
     var viewModel: AccountViewModelProtocol?
 
@@ -75,25 +72,25 @@ final class AccountViewController: UIViewController {
         view.addSubview(moneyboxLabel)
 
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
-            titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: Padding.m),
+            titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Padding.m),
 
-            planValueLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 8),
-            planValueLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            planValueLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: Padding.s),
+            planValueLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Padding.m),
 
-            moneyboxLabel.topAnchor.constraint(equalTo: planValueLabel.bottomAnchor, constant: 8),
-            moneyboxLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16)
+            moneyboxLabel.topAnchor.constraint(equalTo: planValueLabel.bottomAnchor, constant: Padding.s),
+            moneyboxLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Padding.m)
         ])
 
         // Button
-        view.addSubview(actionButton)
+        view.addSubview(addButton)
 
         NSLayoutConstraint.activate([
-            actionButton.topAnchor.constraint(equalTo: moneyboxLabel.bottomAnchor, constant: 16),
-            actionButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+            addButton.topAnchor.constraint(equalTo: moneyboxLabel.bottomAnchor, constant: Padding.m),
+            addButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Padding.m),
+            addButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Padding.m),
+            addButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
-
-        actionButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
     }
 
     private func updateUI() {
@@ -104,8 +101,12 @@ final class AccountViewController: UIViewController {
 
     // MARK: - Methods
 
-    @objc private func buttonTapped() async {
-        await viewModel?.addTenPounds()
-        // updateUI()
+    @objc func addButtonTapped() {
+        Task {
+            viewModel?.addTenPounds()
+            await MainActor.run {
+                moneyboxLabel.text = "Moneybox: £\(viewModel?.moneybox ?? "")"
+            }
+        }
     }
 }

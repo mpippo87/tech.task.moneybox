@@ -27,8 +27,9 @@ final class AccountRepository: AccountRepositoryProtocol {
     // MARK: - Fetch Accounts
 
     func addMoney(amount: Int, investorProductID: Int) async throws -> OneOffPaymentResponse {
-        try await withCheckedThrowingContinuation { continuation in
-            dataProvider.addMoney(request: OneOffPaymentRequest(amount: amount, investorProductID: investorProductID), completion: { result in
+        try await withCheckedThrowingContinuation { [weak self] continuation in
+            self?.dataProvider.addMoney(request: OneOffPaymentRequest(amount: amount, investorProductID: investorProductID), completion: { result in
+                print("§ Fetch Accounts successful: \(result)")
                 switch result {
                 case .success(let response):
                     print("§ Fetch Accounts successful: \(response)")

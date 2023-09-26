@@ -30,7 +30,6 @@ class AccountCoordinator: Coordinator {
     override func start() {
         let accountViewController = AccountViewController(
             viewModel: AccountViewModel(coordinator: self,
-                                        accountService: AccountRepository(),
                                         account: account)
         )
         navigationController.pushViewController(accountViewController, animated: true)

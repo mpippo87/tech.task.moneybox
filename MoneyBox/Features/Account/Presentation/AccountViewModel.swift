@@ -13,7 +13,7 @@ protocol AccountViewModelProtocol {
     var planValue: String { get }
     var moneybox: String { get }
 
-    func addTenPounds() async
+    func addTenPounds()
 }
 
 final class AccountViewModel: AccountViewModelProtocol {
@@ -21,7 +21,7 @@ final class AccountViewModel: AccountViewModelProtocol {
     // MARK: - Parameters
 
     private weak var coordinator: AccountCoordinator?
-    private let accountService: AccountRepositoryProtocol
+    private let accountUseCase: AccountUseCaseProtocol
     private var account: Account
 
     // MARK: - Computed Properties
@@ -44,21 +44,21 @@ final class AccountViewModel: AccountViewModelProtocol {
 
     init(
         coordinator: AccountCoordinator? = nil,
-        accountService: AccountRepositoryProtocol,
+        accountUseCase: AccountUseCaseProtocol = AccountUseCase(accountRepository: AccountRepository()),
         account: Account
     ) {
         self.coordinator = coordinator
-        self.accountService = accountService
+        self.accountUseCase = accountUseCase
         self.account = account
     }
 
     // MARK: - Methods
 
-    func addTenPounds() async {
-        if let moneybox = try? await accountService.addMoney(amount: 10, investorProductID: account.id).moneybox {
-            print("§ 1 account.moneybox: \(account.moneybox)")
-            // account.moneybox = moneybox
-            print("§ 2 account.moneybox: \(moneybox)")
+    func addTenPounds() {
+        Task {
+            if let moneybox = await accountUseCase.execute(amount: 10, investorProductID: account.id) {
+                self.account.moneybox = moneybox
+            }
         }
     }
 }

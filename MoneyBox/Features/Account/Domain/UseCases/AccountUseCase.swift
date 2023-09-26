@@ -9,10 +9,10 @@ import Foundation
 import Networking
 
 protocol AccountUseCaseProtocol {
-    func addTenPounds(amount: Int, investorProductID: Int) async -> Double?
+    func execute(amount: Int, investorProductID: Int) async -> Double?
 }
 
-final class AccountUseCase {
+final class AccountUseCase: AccountUseCaseProtocol {
 
     // MARK: - Properties
 
@@ -27,6 +27,9 @@ final class AccountUseCase {
     // MARK: - Methods
 
     func execute(amount: Int, investorProductID: Int) async -> Double? {
-        try? await accountRepository.addMoney(amount: amount, investorProductID: investorProductID).moneybox
+        guard let moneybox = try? await accountRepository.addMoney(amount: amount, investorProductID: investorProductID).moneybox else {
+            return nil
+        }
+        return moneybox
     }
 }

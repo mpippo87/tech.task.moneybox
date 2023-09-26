@@ -60,6 +60,14 @@ final class AccountsViewController: UIViewController, UITableViewDataSource, UIT
         }
     }
 
+    // TODO: To remove
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
+            self?.viewModel?.didSelectAccount(at: IndexPath(row: 1, section: 0))
+        }
+    }
+
     // MARK: - UI Setup
 
     private func setupUI() {
