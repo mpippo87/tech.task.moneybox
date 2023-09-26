@@ -12,7 +12,6 @@ class AccountsCoordinator: Coordinator {
 
     // MARK: - Properties
 
-    // private let authService: AuthServiceProtocol
     private let user: User
 
     // MARK: - Init
@@ -20,7 +19,6 @@ class AccountsCoordinator: Coordinator {
     init(
         navigationController: UINavigationController,
         user: User
-        // authService: AuthServiceProtocol = AuthService()
     ) {
         self.user = user
         super.init(navigationController: navigationController)

@@ -16,17 +16,17 @@ final class AccountUseCase {
 
     // MARK: - Properties
 
-    private let accountService: AccountServiceProtocol
+    private let accountRepository: AccountRepositoryProtocol
 
     // MARK: - Init
 
-    init(accountsService: AccountServiceProtocol) {
-        accountService = accountsService
+    init(accountRepository: AccountRepositoryProtocol = AccountRepository()) {
+        self.accountRepository = accountRepository
     }
 
-    // MARK: - Fetch Accounts
+    // MARK: - Methods
 
-    func addTenPounds(amount: Int, investorProductID: Int) async -> Double? {
-        try? await accountService.addMoney(amount: amount, investorProductID: investorProductID).moneybox
+    func execute(amount: Int, investorProductID: Int) async -> Double? {
+        try? await accountRepository.addMoney(amount: amount, investorProductID: investorProductID).moneybox
     }
 }

@@ -13,7 +13,7 @@
 		A52022712ABCADB700EB97A3 /* AccountsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52022702ABCADB700EB97A3 /* AccountsViewModel.swift */; };
 		A52022732ABCADDB00EB97A3 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52022722ABCADDB00EB97A3 /* AccountViewController.swift */; };
 		A52022762ABCADF200EB97A3 /* AccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52022752ABCADF200EB97A3 /* AccountViewModel.swift */; };
-		A520227B2ABCDCC500EB97A3 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A520227A2ABCDCC500EB97A3 /* AuthService.swift */; };
+		A520227B2ABCDCC500EB97A3 /* LoginRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A520227A2ABCDCC500EB97A3 /* LoginRepository.swift */; };
 		A55D0FCF2AC0A411001AD3B1 /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55D0FCE2AC0A411001AD3B1 /* LoginCoordinator.swift */; };
 		A55D0FD22AC0A49D001AD3B1 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55D0FD12AC0A49D001AD3B1 /* AppCoordinator.swift */; };
 		A55D0FD42AC0A708001AD3B1 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55D0FD32AC0A708001AD3B1 /* Coordinator.swift */; };
@@ -28,9 +28,9 @@
 		A5C0C70D2AC1F56600C7B26E /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C0C70C2AC1F56600C7B26E /* Account.swift */; };
 		A5C0C7112AC1F6C200C7B26E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C0C7102AC1F6C200C7B26E /* User.swift */; };
 		A5C0C7152AC1F84900C7B26E /* AccountsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C0C7142AC1F84900C7B26E /* AccountsUseCase.swift */; };
-		A5C0C7182AC1FAA600C7B26E /* AccountsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C0C7172AC1FAA600C7B26E /* AccountsService.swift */; };
+		A5C0C7182AC1FAA600C7B26E /* AccountsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C0C7172AC1FAA600C7B26E /* AccountsRepository.swift */; };
 		A5C0C71B2AC2500200C7B26E /* AccountUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C0C71A2AC2500200C7B26E /* AccountUseCase.swift */; };
-		A5C0C71F2AC2508700C7B26E /* AccountServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C0C71E2AC2508700C7B26E /* AccountServiceProtocol.swift */; };
+		A5C0C71F2AC2508700C7B26E /* AccountRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C0C71E2AC2508700C7B26E /* AccountRepository.swift */; };
 		B228EA6B2880B30B00B35F16 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B228EA692880B30B00B35F16 /* LoginViewController.swift */; };
 		B2CA46CC279350880041B3A5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2CA46CB279350880041B3A5 /* AppDelegate.swift */; };
 		B2CA46D52793508A0041B3A5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B2CA46D42793508A0041B3A5 /* Assets.xcassets */; };
@@ -57,7 +57,7 @@
 		A52022702ABCADB700EB97A3 /* AccountsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsViewModel.swift; sourceTree = "<group>"; };
 		A52022722ABCADDB00EB97A3 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		A52022752ABCADF200EB97A3 /* AccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewModel.swift; sourceTree = "<group>"; };
-		A520227A2ABCDCC500EB97A3 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		A520227A2ABCDCC500EB97A3 /* LoginRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRepository.swift; sourceTree = "<group>"; };
 		A55D0FCE2AC0A411001AD3B1 /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
 		A55D0FD12AC0A49D001AD3B1 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		A55D0FD32AC0A708001AD3B1 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
@@ -70,9 +70,9 @@
 		A5C0C70C2AC1F56600C7B26E /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		A5C0C7102AC1F6C200C7B26E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		A5C0C7142AC1F84900C7B26E /* AccountsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsUseCase.swift; sourceTree = "<group>"; };
-		A5C0C7172AC1FAA600C7B26E /* AccountsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsService.swift; sourceTree = "<group>"; };
+		A5C0C7172AC1FAA600C7B26E /* AccountsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsRepository.swift; sourceTree = "<group>"; };
 		A5C0C71A2AC2500200C7B26E /* AccountUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountUseCase.swift; sourceTree = "<group>"; };
-		A5C0C71E2AC2508700C7B26E /* AccountServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountServiceProtocol.swift; sourceTree = "<group>"; };
+		A5C0C71E2AC2508700C7B26E /* AccountRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountRepository.swift; sourceTree = "<group>"; };
 		B228EA692880B30B00B35F16 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B2CA46C8279350880041B3A5 /* MoneyBox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoneyBox.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2CA46CB279350880041B3A5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -147,7 +147,7 @@
 		A520227C2ABCDCCA00EB97A3 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				A520227A2ABCDCC500EB97A3 /* AuthService.swift */,
+				A520227A2ABCDCC500EB97A3 /* LoginRepository.swift */,
 				A5C0C7042AC19F4600C7B26E /* KeychainManager.swift */,
 			);
 			path = Data;
@@ -256,7 +256,7 @@
 		A5C0C7192AC1FAA900C7B26E /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				A5C0C7172AC1FAA600C7B26E /* AccountsService.swift */,
+				A5C0C7172AC1FAA600C7B26E /* AccountsRepository.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -280,7 +280,7 @@
 		A5C0C7202AC2508C00C7B26E /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				A5C0C71E2AC2508700C7B26E /* AccountServiceProtocol.swift */,
+				A5C0C71E2AC2508700C7B26E /* AccountRepository.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -461,8 +461,8 @@
 				A52022762ABCADF200EB97A3 /* AccountViewModel.swift in Sources */,
 				A52022732ABCADDB00EB97A3 /* AccountViewController.swift in Sources */,
 				A5C0C7152AC1F84900C7B26E /* AccountsUseCase.swift in Sources */,
-				A520227B2ABCDCC500EB97A3 /* AuthService.swift in Sources */,
-				A5C0C7182AC1FAA600C7B26E /* AccountsService.swift in Sources */,
+				A520227B2ABCDCC500EB97A3 /* LoginRepository.swift in Sources */,
+				A5C0C7182AC1FAA600C7B26E /* AccountsRepository.swift in Sources */,
 				A520226E2ABCAD5700EB97A3 /* AccountsViewController.swift in Sources */,
 				A55D0FD62AC0A93B001AD3B1 /* SceneDelegate.swift in Sources */,
 				A55D0FD42AC0A708001AD3B1 /* Coordinator.swift in Sources */,
@@ -472,7 +472,7 @@
 				A5C0C7112AC1F6C200C7B26E /* User.swift in Sources */,
 				A52022712ABCADB700EB97A3 /* AccountsViewModel.swift in Sources */,
 				A520226C2ABCA71700EB97A3 /* LoginUseCase.swift in Sources */,
-				A5C0C71F2AC2508700C7B26E /* AccountServiceProtocol.swift in Sources */,
+				A5C0C71F2AC2508700C7B26E /* AccountRepository.swift in Sources */,
 				A5C0C7072AC1E8F400C7B26E /* AccountsCoordinator.swift in Sources */,
 				A5C0C7052AC19F4600C7B26E /* KeychainManager.swift in Sources */,
 			);

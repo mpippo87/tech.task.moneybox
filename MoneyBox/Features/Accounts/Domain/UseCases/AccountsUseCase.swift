@@ -16,18 +16,18 @@ final class AccountsUseCase {
 
     // MARK: - Properties
 
-    private let accountsService: AccountsServiceProtocol
+    private let accountsRepository: AccountsRepositoryProtocol
 
     // MARK: - Init
 
-    init(accountsService: AccountsServiceProtocol) {
-        self.accountsService = accountsService
+    init(accountsRepository: AccountsRepositoryProtocol) {
+        self.accountsRepository = accountsRepository
     }
 
-    // MARK: - Fetch Accounts
+    // MARK: - Methods
 
-    func fetchAccounts() async -> [Account] {
-        guard let products = try? await accountsService.fetchAccounts().productResponses else {
+    func execute() async -> [Account] {
+        guard let products = try? await accountsRepository.fetchAccounts().productResponses else {
             return []
         }
         return products.compactMap { product in

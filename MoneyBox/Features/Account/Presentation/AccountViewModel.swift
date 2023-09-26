@@ -21,7 +21,7 @@ final class AccountViewModel: AccountViewModelProtocol {
     // MARK: - Parameters
 
     private weak var coordinator: AccountCoordinator?
-    private let accountService: AccountServiceProtocol
+    private let accountService: AccountRepositoryProtocol
     private var account: Account
 
     // MARK: - Computed Properties
@@ -44,7 +44,7 @@ final class AccountViewModel: AccountViewModelProtocol {
 
     init(
         coordinator: AccountCoordinator? = nil,
-        accountService: AccountServiceProtocol,
+        accountService: AccountRepositoryProtocol,
         account: Account
     ) {
         self.coordinator = coordinator
@@ -57,8 +57,8 @@ final class AccountViewModel: AccountViewModelProtocol {
     func addTenPounds() async {
         if let moneybox = try? await accountService.addMoney(amount: 10, investorProductID: account.id).moneybox {
             print("§ 1 account.moneybox: \(account.moneybox)")
-            account.moneybox = moneybox
-            print("§ 2 account.moneybox: \(account.moneybox)")
+            // account.moneybox = moneybox
+            print("§ 2 account.moneybox: \(moneybox)")
         }
     }
 }

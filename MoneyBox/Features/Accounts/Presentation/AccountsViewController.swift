@@ -101,11 +101,9 @@ final class AccountsViewController: UIViewController, UITableViewDataSource, UIT
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: AccountTableViewCell.reusableIdentifier, for: indexPath) as! AccountTableViewCell
-
         if let account = viewModel?.userAccountsData[indexPath.row] {
             cell.configure(title: account.title, planValue: String(account.planValue), moneybox: String(account.moneybox))
         }
-
         return cell
     }
 

@@ -49,19 +49,18 @@ final class AccountsViewModel: AccountsViewModelProtocol {
 
     init(
         coordinator: AccountsCoordinator? = nil,
-        accountsUseCase: AccountsUseCase = AccountsUseCase(accountsService: AccountsService(dataProviderLogic: DataProvider())),
+        accountsUseCase: AccountsUseCase = AccountsUseCase(accountsRepository: AccountsRepository()),
         user: User
     ) {
         self.coordinator = coordinator
         self.accountsUseCase = accountsUseCase
         self.user = user
-        print("§ coordinator: \(String(describing: self.coordinator))")
     }
 
     // MARK: - Methods
 
     func fetchAccounts() async {
-        accounts = await accountsUseCase.fetchAccounts()
+        accounts = await accountsUseCase.execute()
     }
 
     func didSelectAccount(at indexPath: IndexPath) {

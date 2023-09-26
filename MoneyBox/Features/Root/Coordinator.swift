@@ -71,7 +71,6 @@ extension Coordinator: UINavigationControllerDelegate {
         guard let fromViewController = navigationController.transitionCoordinator?.viewController(forKey: .from) else {
             return
         }
-
         if navigationController.viewControllers.contains(fromViewController) {
             return
         }

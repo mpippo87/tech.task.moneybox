@@ -21,7 +21,7 @@ final class LoginViewModel {
 
     init(
         coordinator: LoginCoordinator? = nil,
-        usecase: LoginUseCase = LoginUseCase(authService: AuthService(authDataSource: DataProvider()))
+        usecase: LoginUseCase = LoginUseCase(authService: LoginRepository())
     ) {
         self.coordinator = coordinator
         loginUseCase = usecase
@@ -31,7 +31,7 @@ final class LoginViewModel {
 
     func login(email: String, password: String) {
         Task {
-            if let user = try? await loginUseCase.login(email: email, password: password) {
+            if let user = try? await loginUseCase.execute(email: email, password: password) {
                 await coordinator?.goToAccounts(user)
             }
         }

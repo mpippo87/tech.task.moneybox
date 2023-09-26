@@ -1,5 +1,5 @@
 //
-//  AccountServiceProtocol.swift
+//  AccountRepository.swift
 //  MoneyBox
 //
 //  Created by Filippo Minelle on 26/09/2023.
@@ -8,27 +8,27 @@
 import Foundation
 import Networking
 
-protocol AccountServiceProtocol {
+protocol AccountRepositoryProtocol {
     func addMoney(amount: Int, investorProductID: Int) async throws -> OneOffPaymentResponse
 }
 
-final class AccountService: AccountServiceProtocol {
+final class AccountRepository: AccountRepositoryProtocol {
 
     // MARK: - Properties
 
-    private let dataProviderLogic: DataProviderLogic
+    private let dataProvider: DataProviderLogic
 
     // MARK: - Init
 
-    init(dataProviderLogic: DataProviderLogic) {
-        self.dataProviderLogic = dataProviderLogic
+    init(dataProvider: DataProviderLogic = DataProvider()) {
+        self.dataProvider = dataProvider
     }
 
     // MARK: - Fetch Accounts
 
     func addMoney(amount: Int, investorProductID: Int) async throws -> OneOffPaymentResponse {
         try await withCheckedThrowingContinuation { continuation in
-            dataProviderLogic.addMoney(request: OneOffPaymentRequest(amount: amount, investorProductID: investorProductID), completion: { result in
+            dataProvider.addMoney(request: OneOffPaymentRequest(amount: amount, investorProductID: investorProductID), completion: { result in
                 switch result {
                 case .success(let response):
                     print("§ Fetch Accounts successful: \(response)")

@@ -57,7 +57,6 @@ final class LoginViewController: UIViewController {
         view.addSubview(passwordTextField)
         view.addSubview(loginButton)
 
-        // Define constraints
         NSLayoutConstraint.activate([
             logoImage.topAnchor.constraint(equalTo: view.topAnchor, constant: Padding.xl),
             logoImage.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Padding.m),
@@ -80,14 +79,10 @@ final class LoginViewController: UIViewController {
     }
 
     // TODO: To remove
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        usernameTextField.text = "test+ios2@moneyboxapp.com"
-        passwordTextField.text = "P455word12"
-    }
-
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        usernameTextField.text = "test+ios2@moneyboxapp.com"
+        passwordTextField.text = "P455word12"
         loginButtonTapped()
     }
 

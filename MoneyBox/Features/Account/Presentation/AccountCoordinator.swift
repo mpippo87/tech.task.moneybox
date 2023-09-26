@@ -13,7 +13,6 @@ class AccountCoordinator: Coordinator {
 
     // MARK: - Properties
 
-    // private let authService: AuthServiceProtocol
     var account: Account
 
     // MARK: - Init
@@ -29,9 +28,11 @@ class AccountCoordinator: Coordinator {
     // MARK: - Lifecycle
 
     override func start() {
-        let accountViewController = AccountViewController(viewModel: AccountViewModel(coordinator: self,
-                                                                                      accountService: AccountService(dataProviderLogic: DataProvider()),
-                                                                                      account: account))
+        let accountViewController = AccountViewController(
+            viewModel: AccountViewModel(coordinator: self,
+                                        accountService: AccountRepository(),
+                                        account: account)
+        )
         navigationController.pushViewController(accountViewController, animated: true)
     }
 }

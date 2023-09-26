@@ -8,24 +8,11 @@
 import MBUI
 import UIKit.UIKitCore
 
-class LoginCoordinator: Coordinator {
+final class LoginCoordinator: Coordinator {
 
     // MARK: - Properties
 
-    // private let authService: AuthServiceProtocol
-
     var loginViewController: UIViewController?
-
-    // MARK: - Init
-
-    init(
-        navigationController: UINavigationController,
-        boolean: Bool = false
-        // authService: AuthServiceProtocol = AuthService()
-    ) {
-        // self.authService = authService
-        super.init(navigationController: navigationController)
-    }
 
     // MARK: - Lifecycle
 

@@ -106,6 +106,6 @@ final class AccountViewController: UIViewController {
 
     @objc private func buttonTapped() async {
         await viewModel?.addTenPounds()
-        updateUI()
+        // updateUI()
     }
 }
