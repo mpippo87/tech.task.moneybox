@@ -49,6 +49,8 @@ final class LoginViewController: UIViewController {
     }
 
     private func setupUI() {
+        title = "Login"
+
         view.backgroundColor = .color2
         view.addSubview(logoImage)
         view.addSubview(usernameTextField)

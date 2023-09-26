@@ -13,7 +13,6 @@ class AccountsCoordinator: Coordinator {
     // MARK: - Properties
 
     // private let authService: AuthServiceProtocol
-    var accountsViewController: UIViewController?
     private let user: User
 
     // MARK: - Init
@@ -32,7 +31,6 @@ class AccountsCoordinator: Coordinator {
     override func start() {
         let accountsViewController = AccountsViewController(viewModel: AccountsViewModel(coordinator: self, user: user))
         navigationController.setViewControllers([accountsViewController], animated: true)
-        self.accountsViewController = accountsViewController
     }
 
     func goToAccount(_ account: Account) {

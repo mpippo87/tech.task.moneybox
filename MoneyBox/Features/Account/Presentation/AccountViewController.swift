@@ -66,6 +66,8 @@ final class AccountViewController: UIViewController {
     // MARK: - UI Setup
 
     private func setupUI() {
+        title = "Individual Account"
+
         view.backgroundColor = .white
 
         view.addSubview(titleLabel)

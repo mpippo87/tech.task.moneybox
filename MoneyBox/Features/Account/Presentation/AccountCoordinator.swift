@@ -14,7 +14,6 @@ class AccountCoordinator: Coordinator {
     // MARK: - Properties
 
     // private let authService: AuthServiceProtocol
-    var accountViewController: UIViewController?
     var account: Account
 
     // MARK: - Init
@@ -33,7 +32,6 @@ class AccountCoordinator: Coordinator {
         let accountViewController = AccountViewController(viewModel: AccountViewModel(coordinator: self,
                                                                                       accountService: AccountService(dataProviderLogic: DataProvider()),
                                                                                       account: account))
-        navigationController.setViewControllers([accountViewController], animated: true)
-        self.accountViewController = accountViewController
+        navigationController.pushViewController(accountViewController, animated: true)
     }
 }

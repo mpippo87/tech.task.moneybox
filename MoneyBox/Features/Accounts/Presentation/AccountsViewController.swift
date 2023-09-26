@@ -58,6 +58,8 @@ final class AccountsViewController: UIViewController, UITableViewDataSource, UIT
     // MARK: - UI Setup
 
     private func setupUI() {
+        title = "User Accounts"
+
         view.addSubview(nameLabel)
         view.addSubview(totalPlanValueLabel)
 
