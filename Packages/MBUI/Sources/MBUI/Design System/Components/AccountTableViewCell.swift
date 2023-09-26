@@ -36,7 +36,7 @@ public final class AccountTableViewCell: UITableViewCell {
         return label
     }()
 
-    private let arrowImageView: UIImageView = {
+    private let chevronImageView: UIImageView = {
         let imageView = UIImageView(image: UIImage(systemName: "chevron.right"))
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.tintColor = .color1
@@ -72,7 +72,7 @@ public final class AccountTableViewCell: UITableViewCell {
         roundedRectangle.addSubview(titleLabel)
         roundedRectangle.addSubview(planValueLabel)
         roundedRectangle.addSubview(moneyboxLabel)
-        roundedRectangle.addSubview(arrowImageView)
+        roundedRectangle.addSubview(chevronImageView)
 
         NSLayoutConstraint.activate([
             roundedRectangle.topAnchor.constraint(equalTo: contentView.topAnchor, constant: Padding.s),
@@ -86,8 +86,8 @@ public final class AccountTableViewCell: UITableViewCell {
             moneyboxLabel.topAnchor.constraint(equalTo: planValueLabel.bottomAnchor, constant: Padding.xs),
             moneyboxLabel.leadingAnchor.constraint(equalTo: roundedRectangle.leadingAnchor, constant: Padding.m),
             moneyboxLabel.bottomAnchor.constraint(equalTo: roundedRectangle.bottomAnchor, constant: -Padding.s),
-            arrowImageView.centerYAnchor.constraint(equalTo: roundedRectangle.centerYAnchor),
-            arrowImageView.trailingAnchor.constraint(equalTo: roundedRectangle.trailingAnchor, constant: -Padding.m)
+            chevronImageView.centerYAnchor.constraint(equalTo: roundedRectangle.centerYAnchor),
+            chevronImageView.trailingAnchor.constraint(equalTo: roundedRectangle.trailingAnchor, constant: -Padding.m)
         ])
     }
 

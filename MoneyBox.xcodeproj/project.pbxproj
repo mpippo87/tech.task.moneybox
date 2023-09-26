@@ -120,6 +120,7 @@
 		A50CBE1D2AC2D64B00A70FA5 /* Storage */ = {
 			isa = PBXGroup;
 			children = (
+				A50CBE1B2AC2D63600A70FA5 /* AuthDataSource.swift */,
 				A5C0C7042AC19F4600C7B26E /* KeychainManager.swift */,
 			);
 			path = Storage;
@@ -187,7 +188,6 @@
 			isa = PBXGroup;
 			children = (
 				A520227A2ABCDCC500EB97A3 /* LoginRepository.swift */,
-				A50CBE1B2AC2D63600A70FA5 /* AuthDataSource.swift */,
 				A50CBE1D2AC2D64B00A70FA5 /* Storage */,
 			);
 			path = Data;
