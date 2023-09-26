@@ -64,32 +64,24 @@ final class AccountViewController: UIViewController {
 
     private func setupUI() {
         title = "Individual Account"
+        view.backgroundColor = .color2
 
-        view.backgroundColor = .white
+        let labelsStackView = UIStackView(arrangedSubviews: [titleLabel, planValueLabel, moneyboxLabel])
+        labelsStackView.translatesAutoresizingMaskIntoConstraints = false
+        labelsStackView.axis = .vertical
+        labelsStackView.spacing = Padding.s
 
-        view.addSubview(titleLabel)
-        view.addSubview(planValueLabel)
-        view.addSubview(moneyboxLabel)
+        let mainStackView = UIStackView(arrangedSubviews: [labelsStackView, addButton])
+        mainStackView.translatesAutoresizingMaskIntoConstraints = false
+        mainStackView.axis = .vertical
+        mainStackView.spacing = Padding.l
 
-        NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: Padding.m),
-            titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Padding.m),
-
-            planValueLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: Padding.s),
-            planValueLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Padding.m),
-
-            moneyboxLabel.topAnchor.constraint(equalTo: planValueLabel.bottomAnchor, constant: Padding.s),
-            moneyboxLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Padding.m)
-        ])
-
-        // Button
-        view.addSubview(addButton)
+        view.addSubview(mainStackView)
 
         NSLayoutConstraint.activate([
-            addButton.topAnchor.constraint(equalTo: moneyboxLabel.bottomAnchor, constant: Padding.m),
-            addButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Padding.m),
-            addButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Padding.m),
-            addButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+            mainStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: Padding.m),
+            mainStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Padding.m),
+            mainStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Padding.m)
         ])
     }
 
