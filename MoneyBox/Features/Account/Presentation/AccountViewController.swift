@@ -103,9 +103,12 @@ final class AccountViewController: UIViewController {
 
     @objc func addButtonTapped() {
         Task {
-            viewModel?.addTenPounds()
-            await MainActor.run {
-                moneyboxLabel.text = "Moneybox: £\(viewModel?.moneybox ?? "")"
+            viewModel?.addTenPounds { [weak self] moneybox in
+                if let moneybox {
+                    DispatchQueue.main.async {
+                        self?.moneyboxLabel.text = "Moneybox: £\(String(describing: moneybox))"
+                    }
+                }
             }
         }
     }
