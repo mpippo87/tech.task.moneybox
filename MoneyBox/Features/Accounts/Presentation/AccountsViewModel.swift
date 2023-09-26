@@ -38,7 +38,7 @@ final class AccountsViewModel: AccountsViewModelProtocol {
     }
 
     var totalPlanValueLabelText: String {
-        "Total Plan Value: £\(totalValue)"
+        "Total Plan Value: \(String(format: "£%.2f", totalValue))"
     }
 
     var userAccountsData: [Account] {

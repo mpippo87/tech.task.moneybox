@@ -101,7 +101,7 @@ public final class AccountTableViewCell: UITableViewCell {
 
     public func configure(title: String, planValue: String, moneybox: String) {
         titleLabel.text = title
-        planValueLabel.text = "Plan Value: \(planValue)"
-        moneyboxLabel.text = "Moneybox: \(moneybox)"
+        planValueLabel.text = "Plan Value:  £\(planValue)"
+        moneyboxLabel.text = "Moneybox:  £\(moneybox)"
     }
 }
