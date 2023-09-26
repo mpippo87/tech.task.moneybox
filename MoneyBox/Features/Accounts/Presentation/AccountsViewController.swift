@@ -1,4 +1,9 @@
-// AccountsViewController.swift
+//
+//  AccountsViewController.swift
+//  MoneyBox
+//
+//  Created by Filippo Minelle on 21/09/2023.
+//
 
 import MBUI
 import UIKit
@@ -78,10 +83,12 @@ final class AccountsViewController: UIViewController, UITableViewDataSource, UIT
 
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: totalPlanValueLabel.bottomAnchor, constant: 16),
-            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16), // Add horizontal spacing
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16), // Add horizontal spacing
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
+
+        tableView.separatorStyle = .none
 
         // Register the custom cell class
         tableView.register(AccountTableViewCell.self, forCellReuseIdentifier: AccountTableViewCell.reusableIdentifier)
@@ -105,9 +112,5 @@ final class AccountsViewController: UIViewController, UITableViewDataSource, UIT
             cell.configure(title: account.title, planValue: String(account.planValue), moneybox: String(account.moneybox))
         }
         return cell
-    }
-
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        viewModel?.didSelectAccount(at: indexPath)
     }
 }

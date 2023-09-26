@@ -20,9 +20,7 @@ final class LoginViewController: UIViewController {
     }()
 
     private let usernameTextField: TextField = .init(placeholder: "Email", style: .email)
-
     private let passwordTextField: TextField = .init(placeholder: "Password", style: .password)
-
     private let loginButton: Button = .init(title: "Login",
                                             style: .primary,
                                             target: self,
@@ -49,32 +47,29 @@ final class LoginViewController: UIViewController {
     }
 
     private func setupUI() {
-        title = "Login"
+        // Set the custom logoImage as the navigation item's titleView
+        navigationItem.titleView = logoImage
 
         view.backgroundColor = .color2
-        view.addSubview(logoImage)
-        view.addSubview(usernameTextField)
-        view.addSubview(passwordTextField)
-        view.addSubview(loginButton)
+
+        // Create a vertical stack view for the username and password text fields
+        let textFieldsStackView = UIStackView(arrangedSubviews: [usernameTextField, passwordTextField])
+        textFieldsStackView.axis = .vertical
+        textFieldsStackView.spacing = Padding.m
+
+        // Create a vertical stack view for the text fields stack and login button
+        let stackView = UIStackView(arrangedSubviews: [textFieldsStackView, loginButton])
+        stackView.axis = .vertical
+        stackView.spacing = Padding.xl
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+
+        // Add the stack view to the view hierarchy
+        view.addSubview(stackView)
 
         NSLayoutConstraint.activate([
-            logoImage.topAnchor.constraint(equalTo: view.topAnchor, constant: Padding.xl),
-            logoImage.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Padding.m),
-            logoImage.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Padding.m),
-            logoImage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            logoImage.heightAnchor.constraint(equalToConstant: 50),
-
-            usernameTextField.topAnchor.constraint(equalTo: logoImage.bottomAnchor, constant: Padding.l),
-            usernameTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Padding.m),
-            usernameTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Padding.m),
-
-            passwordTextField.topAnchor.constraint(equalTo: usernameTextField.bottomAnchor, constant: Padding.s),
-            passwordTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Padding.m),
-            passwordTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Padding.m),
-
-            loginButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: Padding.m),
-            loginButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Padding.m),
-            loginButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Padding.m)
+            stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: Padding.xl),
+            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Padding.m),
+            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Padding.m)
         ])
     }
 

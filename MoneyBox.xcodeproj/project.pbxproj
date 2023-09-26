@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A50CBE1C2AC2D63600A70FA5 /* AuthDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50CBE1B2AC2D63600A70FA5 /* AuthDataSource.swift */; };
 		A52022682ABCA0F500EB97A3 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52022672ABCA0F500EB97A3 /* LoginViewModel.swift */; };
 		A520226C2ABCA71700EB97A3 /* LoginUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A520226B2ABCA71700EB97A3 /* LoginUseCase.swift */; };
 		A520226E2ABCAD5700EB97A3 /* AccountsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A520226D2ABCAD5700EB97A3 /* AccountsViewController.swift */; };
@@ -51,6 +52,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A50CBE1B2AC2D63600A70FA5 /* AuthDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthDataSource.swift; sourceTree = "<group>"; };
 		A52022672ABCA0F500EB97A3 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		A520226B2ABCA71700EB97A3 /* LoginUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUseCase.swift; sourceTree = "<group>"; };
 		A520226D2ABCAD5700EB97A3 /* AccountsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsViewController.swift; sourceTree = "<group>"; };
@@ -105,6 +107,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A50CBE1D2AC2D64B00A70FA5 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				A5C0C7042AC19F4600C7B26E /* KeychainManager.swift */,
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
 		A52022692ABCA12200EB97A3 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
@@ -148,7 +158,8 @@
 			isa = PBXGroup;
 			children = (
 				A520227A2ABCDCC500EB97A3 /* LoginRepository.swift */,
-				A5C0C7042AC19F4600C7B26E /* KeychainManager.swift */,
+				A50CBE1B2AC2D63600A70FA5 /* AuthDataSource.swift */,
+				A50CBE1D2AC2D64B00A70FA5 /* Storage */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -468,6 +479,7 @@
 				A55D0FD42AC0A708001AD3B1 /* Coordinator.swift in Sources */,
 				A5C0C70D2AC1F56600C7B26E /* Account.swift in Sources */,
 				A5C0C71B2AC2500200C7B26E /* AccountUseCase.swift in Sources */,
+				A50CBE1C2AC2D63600A70FA5 /* AuthDataSource.swift in Sources */,
 				A52022682ABCA0F500EB97A3 /* LoginViewModel.swift in Sources */,
 				A5C0C7112AC1F6C200C7B26E /* User.swift in Sources */,
 				A52022712ABCADB700EB97A3 /* AccountsViewModel.swift in Sources */,
