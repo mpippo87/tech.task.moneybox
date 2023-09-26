@@ -6,6 +6,7 @@
 //
 
 import MBUI
+import Networking
 import UIKit.UIKitCore
 
 class AccountCoordinator: Coordinator {
@@ -21,9 +22,7 @@ class AccountCoordinator: Coordinator {
     init(
         navigationController: UINavigationController,
         account: Account
-        // authService: AuthServiceProtocol = AuthService()
     ) {
-//         self.authService = authService
         self.account = account
         super.init(navigationController: navigationController)
     }
@@ -31,12 +30,10 @@ class AccountCoordinator: Coordinator {
     // MARK: - Lifecycle
 
     override func start() {
-        let accountViewController = AccountViewController(viewModel: AccountViewModel(coordinator: self, account: account))
+        let accountViewController = AccountViewController(viewModel: AccountViewModel(coordinator: self,
+                                                                                      accountService: AccountService(dataProviderLogic: DataProvider()),
+                                                                                      account: account))
         navigationController.setViewControllers([accountViewController], animated: true)
         self.accountViewController = accountViewController
     }
-
-    func goToLogin() {}
-
-    func goToAccounts() {}
 }

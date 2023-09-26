@@ -30,6 +30,14 @@ final class AccountsUseCase {
         guard let products = try? await accountsService.fetchAccounts().productResponses else {
             return []
         }
-        return products.flatMap { Account(title: $0.assetBox?.title ?? "", planValue: $0.planValue ?? 0.0, moneybox: $0.moneybox ?? 0.0) }
+        return products.compactMap { product in
+            guard let id = product.id else { return nil }
+            return Account(
+                id: id,
+                title: product.assetBox?.title ?? "",
+                planValue: product.planValue ?? 0.0,
+                moneybox: product.moneybox ?? 0.0
+            )
+        }
     }
 }

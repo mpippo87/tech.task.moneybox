@@ -8,7 +8,8 @@
 import Foundation
 
 struct Account {
+    let id: Int
     let title: String
-    let planValue: Double
-    let moneybox: Double
+    var planValue: Double
+    var moneybox: Double
 }

@@ -66,7 +66,6 @@ final class AccountsViewModel: AccountsViewModelProtocol {
 
     func didSelectAccount(at indexPath: IndexPath) {
         let selectedAccount = accounts[indexPath.row]
-        print("§ selectedAccount: \(selectedAccount), coordinator: \(String(describing: coordinator))")
         coordinator?.goToAccount(selectedAccount)
     }
 }

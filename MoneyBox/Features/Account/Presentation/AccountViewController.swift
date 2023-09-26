@@ -60,6 +60,7 @@ final class AccountViewController: UIViewController {
         super.viewDidLoad()
 
         setupUI()
+        updateUI()
     }
 
     // MARK: - UI Setup
@@ -67,22 +68,6 @@ final class AccountViewController: UIViewController {
     private func setupUI() {
         view.backgroundColor = .white
 
-        setupLabels()
-        setupButton()
-
-        // Update labels
-        titleLabel.text = viewModel?.accountTitle
-        planValueLabel.text = "Plan Value: £\(viewModel?.planValue ?? "")"
-        moneyboxLabel.text = "Moneybox: £\(viewModel?.moneybox ?? "")"
-    }
-
-    // MARK: - Button Action
-
-    @objc private func buttonTapped() {
-        // Handle button tap action here
-    }
-
-    private func setupLabels() {
         view.addSubview(titleLabel)
         view.addSubview(planValueLabel)
         view.addSubview(moneyboxLabel)
@@ -97,9 +82,8 @@ final class AccountViewController: UIViewController {
             moneyboxLabel.topAnchor.constraint(equalTo: planValueLabel.bottomAnchor, constant: 8),
             moneyboxLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16)
         ])
-    }
 
-    private func setupButton() {
+        // Button
         view.addSubview(actionButton)
 
         NSLayoutConstraint.activate([
@@ -108,5 +92,18 @@ final class AccountViewController: UIViewController {
         ])
 
         actionButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+    }
+
+    private func updateUI() {
+        titleLabel.text = viewModel?.accountTitle
+        planValueLabel.text = "Plan Value: £\(viewModel?.planValue ?? "")"
+        moneyboxLabel.text = "Moneybox: £\(viewModel?.moneybox ?? "")"
+    }
+
+    // MARK: - Methods
+
+    @objc private func buttonTapped() async {
+        await viewModel?.addTenPounds()
+        updateUI()
     }
 }
