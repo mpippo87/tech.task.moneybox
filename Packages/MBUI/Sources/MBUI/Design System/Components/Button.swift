@@ -16,10 +16,6 @@ public final class Button: UIButton {
         case secondary
     }
 
-    // MARK: - Properties
-
-    let cornerRadius = 8.0
-
     // MARK: - Init
 
     public init(
@@ -53,7 +49,7 @@ public final class Button: UIButton {
         case .primary:
             setTitleColor(.color2, for: .normal)
             backgroundColor = .color1
-            layer.cornerRadius = cornerRadius
+            layer.cornerRadius = CornerRadius.s
             widthAnchor.constraint(equalToConstant: 200).isActive = true
 
         case .secondary:
@@ -61,7 +57,7 @@ public final class Button: UIButton {
             backgroundColor = .clear
             layer.borderWidth = 2.0
             layer.borderColor = UIColor.color1.cgColor
-            layer.cornerRadius = cornerRadius
+            layer.cornerRadius = CornerRadius.s
             widthAnchor.constraint(equalToConstant: 200).isActive = true
         }
     }

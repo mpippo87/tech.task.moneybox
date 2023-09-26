@@ -77,25 +77,25 @@ public final class AccountTableViewCell: UITableViewCell {
 
         NSLayoutConstraint.activate([
             // Outer view constraints (to contentView)
-            roundedRectangle.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
-            roundedRectangle.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            roundedRectangle.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            roundedRectangle.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8),
+            roundedRectangle.topAnchor.constraint(equalTo: contentView.topAnchor, constant: Padding.s),
+            roundedRectangle.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Padding.m),
+            roundedRectangle.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Padding.m),
+            roundedRectangle.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -Padding.s),
 
             // Inner view (content) constraints
-            titleLabel.topAnchor.constraint(equalTo: roundedRectangle.topAnchor, constant: 8),
-            titleLabel.leadingAnchor.constraint(equalTo: roundedRectangle.leadingAnchor, constant: 16),
+            titleLabel.topAnchor.constraint(equalTo: roundedRectangle.topAnchor, constant: Padding.s),
+            titleLabel.leadingAnchor.constraint(equalTo: roundedRectangle.leadingAnchor, constant: Padding.m),
 
-            planValueLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 4),
-            planValueLabel.leadingAnchor.constraint(equalTo: roundedRectangle.leadingAnchor, constant: 16),
+            planValueLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: Padding.xs),
+            planValueLabel.leadingAnchor.constraint(equalTo: roundedRectangle.leadingAnchor, constant: Padding.m),
 
-            moneyboxLabel.topAnchor.constraint(equalTo: planValueLabel.bottomAnchor, constant: 4),
-            moneyboxLabel.leadingAnchor.constraint(equalTo: roundedRectangle.leadingAnchor, constant: 16),
-            moneyboxLabel.bottomAnchor.constraint(equalTo: roundedRectangle.bottomAnchor, constant: -8),
+            moneyboxLabel.topAnchor.constraint(equalTo: planValueLabel.bottomAnchor, constant: Padding.xs),
+            moneyboxLabel.leadingAnchor.constraint(equalTo: roundedRectangle.leadingAnchor, constant: Padding.m),
+            moneyboxLabel.bottomAnchor.constraint(equalTo: roundedRectangle.bottomAnchor, constant: -Padding.s),
 
             // Arrow imageView constraints
             arrowImageView.centerYAnchor.constraint(equalTo: roundedRectangle.centerYAnchor),
-            arrowImageView.trailingAnchor.constraint(equalTo: roundedRectangle.trailingAnchor, constant: -16)
+            arrowImageView.trailingAnchor.constraint(equalTo: roundedRectangle.trailingAnchor, constant: -Padding.m)
         ])
     }
 

@@ -69,11 +69,11 @@ final class AccountsViewController: UIViewController, UITableViewDataSource, UIT
         view.addSubview(totalPlanValueLabel)
 
         NSLayoutConstraint.activate([
-            nameLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
-            nameLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            nameLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: Padding.m),
+            nameLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Padding.m),
 
-            totalPlanValueLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 4),
-            totalPlanValueLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16)
+            totalPlanValueLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: Padding.xs),
+            totalPlanValueLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Padding.m)
         ])
 
         // Table
@@ -82,9 +82,9 @@ final class AccountsViewController: UIViewController, UITableViewDataSource, UIT
         tableView.delegate = self
 
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: totalPlanValueLabel.bottomAnchor, constant: 16),
-            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16), // Add horizontal spacing
-            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16), // Add horizontal spacing
+            tableView.topAnchor.constraint(equalTo: totalPlanValueLabel.bottomAnchor, constant: Padding.m),
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
 
@@ -112,5 +112,9 @@ final class AccountsViewController: UIViewController, UITableViewDataSource, UIT
             cell.configure(title: account.title, planValue: String(account.planValue), moneybox: String(account.moneybox))
         }
         return cell
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel?.didSelectAccount(at: indexPath)
     }
 }
