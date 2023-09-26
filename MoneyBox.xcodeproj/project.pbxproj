@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		A50CBE1C2AC2D63600A70FA5 /* AuthDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50CBE1B2AC2D63600A70FA5 /* AuthDataSource.swift */; };
+		A50CBE1F2AC333B400A70FA5 /* LoginRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50CBE1E2AC333B400A70FA5 /* LoginRepositoryTests.swift */; };
+		A50CBE212AC3391E00A70FA5 /* DataProviderMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50CBE202AC3391E00A70FA5 /* DataProviderMock.swift */; };
+		A50CBE232AC33FCD00A70FA5 /* LoginFailed.json in Resources */ = {isa = PBXBuildFile; fileRef = A50CBE222AC33DC600A70FA5 /* LoginFailed.json */; };
 		A52022682ABCA0F500EB97A3 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52022672ABCA0F500EB97A3 /* LoginViewModel.swift */; };
 		A520226C2ABCA71700EB97A3 /* LoginUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A520226B2ABCA71700EB97A3 /* LoginUseCase.swift */; };
 		A520226E2ABCAD5700EB97A3 /* AccountsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A520226D2ABCAD5700EB97A3 /* AccountsViewController.swift */; };
@@ -53,6 +56,9 @@
 
 /* Begin PBXFileReference section */
 		A50CBE1B2AC2D63600A70FA5 /* AuthDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthDataSource.swift; sourceTree = "<group>"; };
+		A50CBE1E2AC333B400A70FA5 /* LoginRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRepositoryTests.swift; sourceTree = "<group>"; };
+		A50CBE202AC3391E00A70FA5 /* DataProviderMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProviderMock.swift; sourceTree = "<group>"; };
+		A50CBE222AC33DC600A70FA5 /* LoginFailed.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = LoginFailed.json; sourceTree = "<group>"; };
 		A52022672ABCA0F500EB97A3 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		A520226B2ABCA71700EB97A3 /* LoginUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUseCase.swift; sourceTree = "<group>"; };
 		A520226D2ABCAD5700EB97A3 /* AccountsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsViewController.swift; sourceTree = "<group>"; };
@@ -331,7 +337,9 @@
 			isa = PBXGroup;
 			children = (
 				B2CA47662794D69A0041B3A5 /* StubData.swift */,
+				A50CBE202AC3391E00A70FA5 /* DataProviderMock.swift */,
 				B2CA47682794D6AC0041B3A5 /* ResponseJsons */,
+				A50CBE1E2AC333B400A70FA5 /* LoginRepositoryTests.swift */,
 			);
 			path = MoneyBoxTests;
 			sourceTree = "<group>";
@@ -340,6 +348,7 @@
 			isa = PBXGroup;
 			children = (
 				B2CA47692794D6D70041B3A5 /* LoginSucceed.json */,
+				A50CBE222AC33DC600A70FA5 /* LoginFailed.json */,
 				B2CA47B2279604A10041B3A5 /* Accounts.json */,
 			);
 			path = ResponseJsons;
@@ -443,6 +452,7 @@
 			files = (
 				A5B3FA762ABC4A2900D27B69 /* Networking in Resources */,
 				A5B3FA772ABC4A2900D27B69 /* MBUI in Resources */,
+				A50CBE232AC33FCD00A70FA5 /* LoginFailed.json in Resources */,
 				B2CA46D82793508A0041B3A5 /* LaunchScreen.storyboard in Resources */,
 				B2CA47712794D8E50041B3A5 /* LoginSucceed.json in Resources */,
 				B2CA46D52793508A0041B3A5 /* Assets.xcassets in Resources */,
@@ -495,6 +505,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				B2CA47672794D69A0041B3A5 /* StubData.swift in Sources */,
+				A50CBE1F2AC333B400A70FA5 /* LoginRepositoryTests.swift in Sources */,
+				A50CBE212AC3391E00A70FA5 /* DataProviderMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
