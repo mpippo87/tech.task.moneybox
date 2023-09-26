@@ -8,7 +8,9 @@
 import Foundation
 import Networking
 
-protocol LoginViewModelProtocol {}
+protocol LoginViewModelProtocol {
+    func login(email: String, password: String) throws
+}
 
 final class LoginViewModel {
 
@@ -29,10 +31,14 @@ final class LoginViewModel {
 
     // MARK: - Methods
 
-    func login(email: String, password: String) {
+    func login(email: String, password: String) throws {
         Task {
-            if let user = try? await loginUseCase.execute(email: email, password: password) {
-                await coordinator?.goToAccounts(user)
+            do {
+                if let user = try await loginUseCase.execute(email: email, password: password) {
+                    await coordinator?.goToAccounts(user)
+                }
+            } catch {
+                throw error
             }
         }
     }

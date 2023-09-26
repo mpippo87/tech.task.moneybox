@@ -15,7 +15,6 @@ final class LoginViewController: UIViewController {
     private let logoImage: UIImageView = {
         let image = UIImageView(image: UIImage(named: "moneybox"))
         image.contentMode = .scaleAspectFit
-        image.heightAnchor.constraint(equalToConstant: 20).isActive = true
         return image
     }()
 
@@ -25,6 +24,27 @@ final class LoginViewController: UIViewController {
                                             style: .primary,
                                             target: self,
                                             action: #selector(loginButtonTapped))
+
+    private let errorLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .red
+        label.textAlignment = .center
+        label.isHidden = true
+        return label
+    }()
+
+    private lazy var stackView: UIStackView = {
+        let textFieldsStackView = UIStackView(arrangedSubviews: [usernameTextField, passwordTextField])
+        textFieldsStackView.axis = .vertical
+        textFieldsStackView.spacing = Padding.m
+
+        let stackView = UIStackView(arrangedSubviews: [textFieldsStackView, errorLabel, loginButton])
+        stackView.axis = .vertical
+        stackView.spacing = Padding.xl
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+
+        return stackView
+    }()
 
     var viewModel: LoginViewModel?
 
@@ -47,25 +67,12 @@ final class LoginViewController: UIViewController {
     }
 
     private func setupUI() {
-        // Set the custom logoImage as the navigation item's titleView
         navigationItem.titleView = logoImage
-
         view.backgroundColor = .color2
-
-        // Create a vertical stack view for the username and password text fields
-        let textFieldsStackView = UIStackView(arrangedSubviews: [usernameTextField, passwordTextField])
-        textFieldsStackView.axis = .vertical
-        textFieldsStackView.spacing = Padding.m
-
-        // Create a vertical stack view for the text fields stack and login button
-        let stackView = UIStackView(arrangedSubviews: [textFieldsStackView, loginButton])
-        stackView.axis = .vertical
-        stackView.spacing = Padding.xl
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-
-        // Add the stack view to the view hierarchy
         view.addSubview(stackView)
 
+        // Constraints
+        logoImage.heightAnchor.constraint(equalToConstant: 20).isActive = true
         NSLayoutConstraint.activate([
             stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: Padding.xl),
             stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Padding.m),
@@ -73,20 +80,25 @@ final class LoginViewController: UIViewController {
         ])
     }
 
-    // TODO: To remove
-    //    override func viewDidAppear(_ animated: Bool) {
-    //        super.viewDidAppear(animated)
-    //        usernameTextField.text = "test+ios2@moneyboxapp.com"
-    //        passwordTextField.text = "P455word12"
-    //        loginButtonTapped()
-    //    }
-
     // MARK: - Actions
 
     @objc func loginButtonTapped() {
-        if let email = usernameTextField.text,
-           let password = passwordTextField.text {
-            viewModel?.login(email: email, password: password)
+        guard let email = usernameTextField.text, !email.isEmpty,
+              let password = passwordTextField.text, !password.isEmpty else {
+            updateError("Email and password cannot be empty")
+            return
         }
+
+        do {
+            try viewModel?.login(email: email, password: password)
+            updateError(nil)
+        } catch {
+            updateError("Invalid Email and password")
+        }
+    }
+
+    private func updateError(_ message: String?) {
+        errorLabel.text = message
+        errorLabel.isHidden = message == nil
     }
 }

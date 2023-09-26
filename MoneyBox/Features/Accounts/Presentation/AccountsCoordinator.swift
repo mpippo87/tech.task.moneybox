@@ -8,7 +8,7 @@
 import MBUI
 import UIKit.UIKitCore
 
-class AccountsCoordinator: Coordinator {
+final class AccountsCoordinator: Coordinator {
 
     // MARK: - Properties
 

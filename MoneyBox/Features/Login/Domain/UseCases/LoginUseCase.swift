@@ -26,10 +26,14 @@ final class LoginUseCase: LoginUseCaseProtocol {
     // MARK: - Methods
 
     func execute(email: String, password: String) async throws -> User? {
-        guard let user = try? await loginRepository.authenticate(with: email, password: password).user,
-              let name = user.firstName, let surname = user.lastName else {
-            return nil
+        do {
+            let user = try await loginRepository.authenticate(with: email, password: password).user
+            guard let name = user.firstName, let surname = user.lastName else {
+                return nil
+            }
+            return User(name: name, surname: surname)
+        } catch {
+            throw error
         }
-        return User(name: name, surname: surname)
     }
 }

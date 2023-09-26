@@ -69,31 +69,23 @@ public final class AccountTableViewCell: UITableViewCell {
     private func setupUI() {
         contentView.addSubview(roundedRectangle)
 
-        // Add subviews to the outer view
         roundedRectangle.addSubview(titleLabel)
         roundedRectangle.addSubview(planValueLabel)
         roundedRectangle.addSubview(moneyboxLabel)
         roundedRectangle.addSubview(arrowImageView)
 
         NSLayoutConstraint.activate([
-            // Outer view constraints (to contentView)
             roundedRectangle.topAnchor.constraint(equalTo: contentView.topAnchor, constant: Padding.s),
             roundedRectangle.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Padding.m),
             roundedRectangle.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Padding.m),
             roundedRectangle.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -Padding.s),
-
-            // Inner view (content) constraints
             titleLabel.topAnchor.constraint(equalTo: roundedRectangle.topAnchor, constant: Padding.s),
             titleLabel.leadingAnchor.constraint(equalTo: roundedRectangle.leadingAnchor, constant: Padding.m),
-
             planValueLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: Padding.xs),
             planValueLabel.leadingAnchor.constraint(equalTo: roundedRectangle.leadingAnchor, constant: Padding.m),
-
             moneyboxLabel.topAnchor.constraint(equalTo: planValueLabel.bottomAnchor, constant: Padding.xs),
             moneyboxLabel.leadingAnchor.constraint(equalTo: roundedRectangle.leadingAnchor, constant: Padding.m),
             moneyboxLabel.bottomAnchor.constraint(equalTo: roundedRectangle.bottomAnchor, constant: -Padding.s),
-
-            // Arrow imageView constraints
             arrowImageView.centerYAnchor.constraint(equalTo: roundedRectangle.centerYAnchor),
             arrowImageView.trailingAnchor.constraint(equalTo: roundedRectangle.trailingAnchor, constant: -Padding.m)
         ])
