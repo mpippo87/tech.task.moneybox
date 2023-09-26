@@ -12,7 +12,6 @@ final class AppCoordinator: Coordinator {
 
     // MARK: - Properties
 
-    // private let authService: AuthServiceProtocol
     private(set) var window: UIWindow
     private(set) var loginCoordinator: Coordinator?
 
@@ -21,10 +20,8 @@ final class AppCoordinator: Coordinator {
     init(
         navigationController: UINavigationController,
         window: UIWindow = UIWindow(frame: UIScreen.main.bounds)
-        // authService: AuthServiceProtocol = AuthService(),
     ) {
         self.window = window
-        // self.authService = authService
         super.init(navigationController: navigationController)
         self.window.rootViewController = self.navigationController
         self.window.makeKeyAndVisible()
@@ -37,18 +34,9 @@ final class AppCoordinator: Coordinator {
     }
 
     func goToLogin() {
-        print("§ goToLogin")
         loginCoordinator = LoginCoordinator(navigationController: navigationController)
         if let loginCoordinator {
             start(coordinator: loginCoordinator)
         }
-    }
-
-    func goToAccounts() {
-        print("§ goToAccounts")
-        //        loginCoordinator = TabBarCoordinator(navigationController: navigationController, authService: authService)
-        //        if let loginCoordinator {
-        //            start(coordinator: loginCoordinator)
-        //        }
     }
 }

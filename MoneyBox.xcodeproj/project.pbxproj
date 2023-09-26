@@ -11,6 +11,8 @@
 		A50CBE1F2AC333B400A70FA5 /* LoginRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50CBE1E2AC333B400A70FA5 /* LoginRepositoryTests.swift */; };
 		A50CBE212AC3391E00A70FA5 /* DataProviderMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50CBE202AC3391E00A70FA5 /* DataProviderMock.swift */; };
 		A50CBE232AC33FCD00A70FA5 /* LoginFailed.json in Resources */ = {isa = PBXBuildFile; fileRef = A50CBE222AC33DC600A70FA5 /* LoginFailed.json */; };
+		A50CBE252AC3432E00A70FA5 /* AccountsRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50CBE242AC3432E00A70FA5 /* AccountsRepositoryTests.swift */; };
+		A50CBE292AC3472900A70FA5 /* AccountsFailed.json in Resources */ = {isa = PBXBuildFile; fileRef = A50CBE282AC346D700A70FA5 /* AccountsFailed.json */; };
 		A52022682ABCA0F500EB97A3 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52022672ABCA0F500EB97A3 /* LoginViewModel.swift */; };
 		A520226C2ABCA71700EB97A3 /* LoginUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A520226B2ABCA71700EB97A3 /* LoginUseCase.swift */; };
 		A520226E2ABCAD5700EB97A3 /* AccountsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A520226D2ABCAD5700EB97A3 /* AccountsViewController.swift */; };
@@ -59,6 +61,8 @@
 		A50CBE1E2AC333B400A70FA5 /* LoginRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRepositoryTests.swift; sourceTree = "<group>"; };
 		A50CBE202AC3391E00A70FA5 /* DataProviderMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProviderMock.swift; sourceTree = "<group>"; };
 		A50CBE222AC33DC600A70FA5 /* LoginFailed.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = LoginFailed.json; sourceTree = "<group>"; };
+		A50CBE242AC3432E00A70FA5 /* AccountsRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsRepositoryTests.swift; sourceTree = "<group>"; };
+		A50CBE282AC346D700A70FA5 /* AccountsFailed.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = AccountsFailed.json; sourceTree = "<group>"; };
 		A52022672ABCA0F500EB97A3 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		A520226B2ABCA71700EB97A3 /* LoginUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUseCase.swift; sourceTree = "<group>"; };
 		A520226D2ABCAD5700EB97A3 /* AccountsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsViewController.swift; sourceTree = "<group>"; };
@@ -119,6 +123,25 @@
 				A5C0C7042AC19F4600C7B26E /* KeychainManager.swift */,
 			);
 			path = Storage;
+			sourceTree = "<group>";
+		};
+		A50CBE262AC3433E00A70FA5 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				B2CA47682794D6AC0041B3A5 /* ResponseJsons */,
+				B2CA47662794D69A0041B3A5 /* StubData.swift */,
+				A50CBE202AC3391E00A70FA5 /* DataProviderMock.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		A50CBE272AC3453F00A70FA5 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				A50CBE1E2AC333B400A70FA5 /* LoginRepositoryTests.swift */,
+				A50CBE242AC3432E00A70FA5 /* AccountsRepositoryTests.swift */,
+			);
+			path = Repositories;
 			sourceTree = "<group>";
 		};
 		A52022692ABCA12200EB97A3 /* Presentation */ = {
@@ -336,10 +359,8 @@
 		B2CA46E12793508A0041B3A5 /* MoneyBoxTests */ = {
 			isa = PBXGroup;
 			children = (
-				B2CA47662794D69A0041B3A5 /* StubData.swift */,
-				A50CBE202AC3391E00A70FA5 /* DataProviderMock.swift */,
-				B2CA47682794D6AC0041B3A5 /* ResponseJsons */,
-				A50CBE1E2AC333B400A70FA5 /* LoginRepositoryTests.swift */,
+				A50CBE262AC3433E00A70FA5 /* Mocks */,
+				A50CBE272AC3453F00A70FA5 /* Repositories */,
 			);
 			path = MoneyBoxTests;
 			sourceTree = "<group>";
@@ -349,6 +370,7 @@
 			children = (
 				B2CA47692794D6D70041B3A5 /* LoginSucceed.json */,
 				A50CBE222AC33DC600A70FA5 /* LoginFailed.json */,
+				A50CBE282AC346D700A70FA5 /* AccountsFailed.json */,
 				B2CA47B2279604A10041B3A5 /* Accounts.json */,
 			);
 			path = ResponseJsons;
@@ -454,6 +476,7 @@
 				A5B3FA772ABC4A2900D27B69 /* MBUI in Resources */,
 				A50CBE232AC33FCD00A70FA5 /* LoginFailed.json in Resources */,
 				B2CA46D82793508A0041B3A5 /* LaunchScreen.storyboard in Resources */,
+				A50CBE292AC3472900A70FA5 /* AccountsFailed.json in Resources */,
 				B2CA47712794D8E50041B3A5 /* LoginSucceed.json in Resources */,
 				B2CA46D52793508A0041B3A5 /* Assets.xcassets in Resources */,
 				B2CA47B42796052F0041B3A5 /* Accounts.json in Resources */,
@@ -507,6 +530,7 @@
 				B2CA47672794D69A0041B3A5 /* StubData.swift in Sources */,
 				A50CBE1F2AC333B400A70FA5 /* LoginRepositoryTests.swift in Sources */,
 				A50CBE212AC3391E00A70FA5 /* DataProviderMock.swift in Sources */,
+				A50CBE252AC3432E00A70FA5 /* AccountsRepositoryTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

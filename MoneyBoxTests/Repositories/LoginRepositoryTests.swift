@@ -36,7 +36,7 @@ final class LoginRepositoryTests: XCTestCase {
             XCTAssertNotNil(loginResponse)
             XCTAssertEqual(Authentication.token, "GuQfJPpjUyJH10Og+hS9c0ttz4q2ZoOnEQBSBP2eAEs=")
         } catch {
-            XCTFail("test_authenticate_whenLoginSucceed_theTokenShouldMatch failed with error: \(error)")
+            XCTFail("test_authenticate_whenLoginSucceed_theTokenShouldMatch should not fail")
         }
     }
 
