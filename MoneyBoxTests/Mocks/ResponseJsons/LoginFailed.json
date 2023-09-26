@@ -1,0 +1,6 @@
+{
+    "error": {
+        "description": "error-description",
+        "code": 501
+    }
+}
