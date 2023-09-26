@@ -74,12 +74,12 @@ final class LoginViewController: UIViewController {
     }
 
     // TODO: To remove
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        usernameTextField.text = "test+ios2@moneyboxapp.com"
-        passwordTextField.text = "P455word12"
-        loginButtonTapped()
-    }
+    //    override func viewDidAppear(_ animated: Bool) {
+    //        super.viewDidAppear(animated)
+    //        usernameTextField.text = "test+ios2@moneyboxapp.com"
+    //        passwordTextField.text = "P455word12"
+    //        loginButtonTapped()
+    //    }
 
     // MARK: - Actions
 
