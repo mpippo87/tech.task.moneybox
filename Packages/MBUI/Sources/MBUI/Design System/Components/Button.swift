@@ -25,7 +25,6 @@ public final class Button: UIButton {
         action: Selector? = nil
     ) {
         super.init(frame: .zero)
-
         setTitle(title, for: .normal)
         translatesAutoresizingMaskIntoConstraints = false
 

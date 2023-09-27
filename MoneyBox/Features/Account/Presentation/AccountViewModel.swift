@@ -13,7 +13,7 @@ protocol AccountViewModelProtocol {
     var planValue: String { get }
     var moneybox: String { get }
 
-    func addTenPounds(completion: @escaping (Double?) -> Void)
+    func addTenPounds(_ completion: @escaping (Double?) -> Void)
 }
 
 final class AccountViewModel: AccountViewModelProtocol {
@@ -31,11 +31,11 @@ final class AccountViewModel: AccountViewModelProtocol {
     }
 
     var planValue: String {
-        String(account.planValue)
+        "Plan Value: £\(account.planValue)"
     }
 
     var moneybox: String {
-        String(account.moneybox)
+        "Moneybox: £\(account.moneybox)"
     }
 
     @Published var moneyboxValue: Double? = nil
@@ -54,7 +54,7 @@ final class AccountViewModel: AccountViewModelProtocol {
 
     // MARK: - Methods
 
-    func addTenPounds(completion: @escaping (Double?) -> Void) {
+    func addTenPounds(_ completion: @escaping (Double?) -> Void) {
         Task {
             if let moneybox = await accountUseCase.execute(amount: 10, investorProductID: account.id) {
                 completion(moneybox)
