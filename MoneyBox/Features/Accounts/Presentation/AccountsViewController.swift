@@ -32,6 +32,8 @@ final class AccountsViewController: UIViewController, UITableViewDataSource, UIT
         return tableView
     }()
 
+    let activityIndicator: ActivityIndicator = .init()
+
     var viewModel: AccountsViewModelProtocol?
 
     // MARK: - Init
@@ -53,13 +55,14 @@ final class AccountsViewController: UIViewController, UITableViewDataSource, UIT
         setupUI()
     }
 
-    override func viewWillAppear(_ animation: Bool) {
-        super.viewWillAppear(animation)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         update()
     }
 
     func update() {
         Task {
+            activityIndicator.startAnimating()
             await viewModel?.fetchAccounts { [weak self] in
                 self?.updateUI()
             }
@@ -73,7 +76,6 @@ final class AccountsViewController: UIViewController, UITableViewDataSource, UIT
 
         view.addSubview(nameLabel)
         view.addSubview(totalPlanValueLabel)
-
         NSLayoutConstraint.activate([
             nameLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: Padding.m),
             nameLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Padding.m),
@@ -96,6 +98,15 @@ final class AccountsViewController: UIViewController, UITableViewDataSource, UIT
 
         tableView.separatorStyle = .none
         tableView.register(AccountTableViewCell.self, forCellReuseIdentifier: AccountTableViewCell.reusableIdentifier)
+
+        // ActivityIndicator
+        view.addSubview(activityIndicator)
+        NSLayoutConstraint.activate([
+            activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
+        activityIndicator.isHidden = false
+        view.bringSubviewToFront(activityIndicator)
     }
 
     private func updateUI() {
@@ -103,6 +114,7 @@ final class AccountsViewController: UIViewController, UITableViewDataSource, UIT
             nameLabel.text = viewModel?.nameLabelText
             totalPlanValueLabel.text = viewModel?.totalPlanValueLabelText
             tableView.reloadData()
+            activityIndicator.stopAnimating()
         }
     }
 

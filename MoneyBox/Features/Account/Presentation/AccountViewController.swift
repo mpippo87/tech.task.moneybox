@@ -49,13 +49,7 @@ final class AccountViewController: UIViewController {
                                           target: self,
                                           action: #selector(addButtonTapped))
 
-    let activityIndicator: UIActivityIndicatorView = {
-        let indicator = UIActivityIndicatorView(style: .medium)
-        indicator.translatesAutoresizingMaskIntoConstraints = false
-        indicator.hidesWhenStopped = true
-        indicator.color = .color1
-        return indicator
-    }()
+    let activityIndicator: ActivityIndicator = .init()
 
     var viewModel: AccountViewModelProtocol?
 
