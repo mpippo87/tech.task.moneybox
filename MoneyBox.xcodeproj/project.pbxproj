@@ -7,12 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A50CBE1C2AC2D63600A70FA5 /* AuthDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50CBE1B2AC2D63600A70FA5 /* AuthDataSource.swift */; };
+		A50CBE1C2AC2D63600A70FA5 /* LoginStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50CBE1B2AC2D63600A70FA5 /* LoginStorage.swift */; };
 		A50CBE1F2AC333B400A70FA5 /* LoginRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50CBE1E2AC333B400A70FA5 /* LoginRepositoryTests.swift */; };
 		A50CBE212AC3391E00A70FA5 /* DataProviderMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50CBE202AC3391E00A70FA5 /* DataProviderMock.swift */; };
 		A50CBE232AC33FCD00A70FA5 /* LoginFailed.json in Resources */ = {isa = PBXBuildFile; fileRef = A50CBE222AC33DC600A70FA5 /* LoginFailed.json */; };
 		A50CBE252AC3432E00A70FA5 /* AccountsRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50CBE242AC3432E00A70FA5 /* AccountsRepositoryTests.swift */; };
 		A50CBE292AC3472900A70FA5 /* AccountsFailed.json in Resources */ = {isa = PBXBuildFile; fileRef = A50CBE282AC346D700A70FA5 /* AccountsFailed.json */; };
+		A50CBE2C2AC43E2500A70FA5 /* MBFoundation in Resources */ = {isa = PBXBuildFile; fileRef = A50CBE2B2AC43E2400A70FA5 /* MBFoundation */; };
+		A50CBE2E2AC43E2F00A70FA5 /* MBFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = A50CBE2D2AC43E2F00A70FA5 /* MBFoundation */; };
 		A52022682ABCA0F500EB97A3 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52022672ABCA0F500EB97A3 /* LoginViewModel.swift */; };
 		A520226C2ABCA71700EB97A3 /* LoginUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A520226B2ABCA71700EB97A3 /* LoginUseCase.swift */; };
 		A520226E2ABCAD5700EB97A3 /* AccountsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A520226D2ABCAD5700EB97A3 /* AccountsViewController.swift */; };
@@ -28,7 +30,6 @@
 		A5B3FA772ABC4A2900D27B69 /* MBUI in Resources */ = {isa = PBXBuildFile; fileRef = A5B3FA752ABC4A2900D27B69 /* MBUI */; };
 		A5B3FA7A2ABC4A3500D27B69 /* Networking in Frameworks */ = {isa = PBXBuildFile; productRef = A5B3FA792ABC4A3500D27B69 /* Networking */; };
 		A5B3FA7C2ABC4A3500D27B69 /* MBUI in Frameworks */ = {isa = PBXBuildFile; productRef = A5B3FA7B2ABC4A3500D27B69 /* MBUI */; };
-		A5C0C7052AC19F4600C7B26E /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C0C7042AC19F4600C7B26E /* KeychainManager.swift */; };
 		A5C0C7072AC1E8F400C7B26E /* AccountsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C0C7062AC1E8F400C7B26E /* AccountsCoordinator.swift */; };
 		A5C0C70B2AC1EDB100C7B26E /* AccountCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C0C70A2AC1EDB100C7B26E /* AccountCoordinator.swift */; };
 		A5C0C70D2AC1F56600C7B26E /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C0C70C2AC1F56600C7B26E /* Account.swift */; };
@@ -57,12 +58,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		A50CBE1B2AC2D63600A70FA5 /* AuthDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthDataSource.swift; sourceTree = "<group>"; };
+		A50CBE1B2AC2D63600A70FA5 /* LoginStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginStorage.swift; sourceTree = "<group>"; };
 		A50CBE1E2AC333B400A70FA5 /* LoginRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRepositoryTests.swift; sourceTree = "<group>"; };
 		A50CBE202AC3391E00A70FA5 /* DataProviderMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProviderMock.swift; sourceTree = "<group>"; };
 		A50CBE222AC33DC600A70FA5 /* LoginFailed.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = LoginFailed.json; sourceTree = "<group>"; };
 		A50CBE242AC3432E00A70FA5 /* AccountsRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsRepositoryTests.swift; sourceTree = "<group>"; };
 		A50CBE282AC346D700A70FA5 /* AccountsFailed.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = AccountsFailed.json; sourceTree = "<group>"; };
+		A50CBE2B2AC43E2400A70FA5 /* MBFoundation */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = MBFoundation; path = Packages/MBFoundation; sourceTree = "<group>"; };
 		A52022672ABCA0F500EB97A3 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		A520226B2ABCA71700EB97A3 /* LoginUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUseCase.swift; sourceTree = "<group>"; };
 		A520226D2ABCAD5700EB97A3 /* AccountsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsViewController.swift; sourceTree = "<group>"; };
@@ -76,7 +78,6 @@
 		A55D0FD52AC0A93B001AD3B1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		A5B3FA742ABC4A2800D27B69 /* Networking */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Networking; path = Packages/Networking; sourceTree = "<group>"; };
 		A5B3FA752ABC4A2900D27B69 /* MBUI */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = MBUI; path = Packages/MBUI; sourceTree = "<group>"; };
-		A5C0C7042AC19F4600C7B26E /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
 		A5C0C7062AC1E8F400C7B26E /* AccountsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsCoordinator.swift; sourceTree = "<group>"; };
 		A5C0C70A2AC1EDB100C7B26E /* AccountCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCoordinator.swift; sourceTree = "<group>"; };
 		A5C0C70C2AC1F56600C7B26E /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
@@ -103,6 +104,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A5B3FA7A2ABC4A3500D27B69 /* Networking in Frameworks */,
+				A50CBE2E2AC43E2F00A70FA5 /* MBFoundation in Frameworks */,
 				A5B3FA7C2ABC4A3500D27B69 /* MBUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -120,8 +122,7 @@
 		A50CBE1D2AC2D64B00A70FA5 /* Storage */ = {
 			isa = PBXGroup;
 			children = (
-				A50CBE1B2AC2D63600A70FA5 /* AuthDataSource.swift */,
-				A5C0C7042AC19F4600C7B26E /* KeychainManager.swift */,
+				A50CBE1B2AC2D63600A70FA5 /* LoginStorage.swift */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -379,6 +380,7 @@
 		B2DEEA31288818470030A8F2 /* Packages */ = {
 			isa = PBXGroup;
 			children = (
+				A50CBE2B2AC43E2400A70FA5 /* MBFoundation */,
 				A5B3FA752ABC4A2900D27B69 /* MBUI */,
 				A5B3FA742ABC4A2800D27B69 /* Networking */,
 			);
@@ -404,6 +406,7 @@
 			packageProductDependencies = (
 				A5B3FA792ABC4A3500D27B69 /* Networking */,
 				A5B3FA7B2ABC4A3500D27B69 /* MBUI */,
+				A50CBE2D2AC43E2F00A70FA5 /* MBFoundation */,
 			);
 			productName = MoneyBox;
 			productReference = B2CA46C8279350880041B3A5 /* MoneyBox.app */;
@@ -476,6 +479,7 @@
 				A5B3FA772ABC4A2900D27B69 /* MBUI in Resources */,
 				A50CBE232AC33FCD00A70FA5 /* LoginFailed.json in Resources */,
 				B2CA46D82793508A0041B3A5 /* LaunchScreen.storyboard in Resources */,
+				A50CBE2C2AC43E2500A70FA5 /* MBFoundation in Resources */,
 				A50CBE292AC3472900A70FA5 /* AccountsFailed.json in Resources */,
 				B2CA47712794D8E50041B3A5 /* LoginSucceed.json in Resources */,
 				B2CA46D52793508A0041B3A5 /* Assets.xcassets in Resources */,
@@ -512,14 +516,13 @@
 				A55D0FD42AC0A708001AD3B1 /* Coordinator.swift in Sources */,
 				A5C0C70D2AC1F56600C7B26E /* Account.swift in Sources */,
 				A5C0C71B2AC2500200C7B26E /* AccountUseCase.swift in Sources */,
-				A50CBE1C2AC2D63600A70FA5 /* AuthDataSource.swift in Sources */,
+				A50CBE1C2AC2D63600A70FA5 /* LoginStorage.swift in Sources */,
 				A52022682ABCA0F500EB97A3 /* LoginViewModel.swift in Sources */,
 				A5C0C7112AC1F6C200C7B26E /* User.swift in Sources */,
 				A52022712ABCADB700EB97A3 /* AccountsViewModel.swift in Sources */,
 				A520226C2ABCA71700EB97A3 /* LoginUseCase.swift in Sources */,
 				A5C0C71F2AC2508700C7B26E /* AccountRepository.swift in Sources */,
 				A5C0C7072AC1E8F400C7B26E /* AccountsCoordinator.swift in Sources */,
-				A5C0C7052AC19F4600C7B26E /* KeychainManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -805,6 +808,10 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		A50CBE2D2AC43E2F00A70FA5 /* MBFoundation */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = MBFoundation;
+		};
 		A5B3FA792ABC4A3500D27B69 /* Networking */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Networking;

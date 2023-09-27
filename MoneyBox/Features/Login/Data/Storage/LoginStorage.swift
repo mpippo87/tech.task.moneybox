@@ -1,13 +1,13 @@
 //
-//  AuthDataSource.swift
+//  LoginStorage.swift
 //  MoneyBox
 //
 //  Created by Filippo Minelle on 26/09/2023.
 //
 
-import Foundation
+import MBFoundation
 
-final class AuthDataSource {
+final class LoginStorage {
 
     // MARK: - Properties
 

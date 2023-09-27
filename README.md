@@ -1,70 +1,35 @@
 
 # Moneybox iOS Technical Challenge
 
-## The Brief
+![MoneyBox App](moneybox_app.gif)
 
-To create a 'light' version of the Moneybox app that will allow existing users to login and check their account balance, as well as viewing their Moneybox savings. 
-- To fork this repository to your private repository and implement the solution.
- 
-### The app should have
-- A login screen to allow existing users to sign in
-- A screen to show the accounts the user holds, e.g. ISA, GIA
-- A screen to show some details of the account, including a simple button to add money to its moneybox.
-- The button will add a fixed amount of £10. It should use the `POST /oneoffpayments` endpoint provided, and the account's Moneybox amount would be updated.
+The project structured following the MVVM-C architecture pattern combined with Clean Architecture principles. This promotes the separation of maintainability, concerns, and testability.
 
-A prototype wireframe of all 3 screens is provided as a guideline. You are free to provide additional information if you wish.
-![](wireframe.png)
+## MVVM-C Architecture Pattern
 
-### What we are looking for
- - **Showcase what you can do. It can be a refined UI, or enhanced UX, or use of specific design patterns in the code, or anything that can make the project stand out.**
- - Demonstration of coding style, conventions and patterns.
- - A tidy code organisation.
- - Use of autolayout (preferably UIKit).
- - Implementation of unit tests.
- - Any accessibility feature would be a bonus.
- - The application must run on iOS 13 or later.
- - Any 3rd party library should be integrated using Swift Package Manager.
+The MVVM-C separates an application into three main components:
+- *Model*: data and business logic of the application.
+- *View*: UI and layout of the screen.
+- *ViewModel*: transforms the data from the Model into a format that can be easily displayed by the View.
 
-### API Usage
-The Networking methods and Models for requests and responses are ready-made in the Networking module of the project.
+- *Coordinator*: is responsible for managing the navigation within the screens.
 
-#### Base URL & Test User
-The base URL for the moneybox sandbox environment is `https://api-test02.moneyboxapp.com/`. </br>
-You can log in using the following user:
 
-|  Username          | Password         |
-| ------------- | ------------- |
-| test+ios2@moneyboxapp.com  | P455word12  |
+## Clean Architecture
 
-#### Authentication
-You should obtain a bearer token from the Login response, and attach it as an Authorization header for the endpoints. Helper methods in the API/Base folder should be used for that.
-(Note: The BearerToken has a sliding expiration of 5 mins).
+The Clean Architecture divides the project structure into different layers:
+- *Presentation*: for the ViewModels and Views.
+- *Domain*: contains the business logic and use cases of the application.
+- *Data*: provides the data from APIs, storages and and interact with external dependencies.
 
-| Key  |  Value  |
-| ------------- | ------------- |
-| Authorization |  Bearer TsMWRkbrcu3NGrpf84gi2+pg0iOMVymyKklmkY0oI84= |
 
-#### API Call Hint
+## Modularity
 
-```
-let dataProvider = DataProvider()
-dataProvider.login(request: request, completion: completion)
-```
-request: Initialize your request model </br>
-Completion: Handle your API success and failure cases
+The project presents a modular architecture introducing several modules (like Networking) for the separation of the code (no monolith). This modular approach allows an independent testing: the module can be tested separately without impacting the business logic, promoting better testability.
 
-## Unit Tests
-The MoneyBoxTests folder includes stubbed data to easily mock the responses needed for unit testing
+In particular, the `MBUI` module, it's a good example for introducing a technical design system and a starting point for a SwiftUI implementation. This helps in keeping the UI consistent and aligned with design guidelines.
 
-#### Usage Hint
-You can create a DataProviderMock class via inject DataProviderLogic protocol </br>
-You can mock response in Login.json file like this:
-```
-StubData.read(file: "Login", callback: completion)
-```
 
-### How to Submit your solution:
- - To share your Github repository with the user valerio-bettini.
- - (Optional) Provide a readme in markdown which outlines your solution.
+## Considerations
 
-## Good luck!
+Please note that error handling has not been fully implemented.

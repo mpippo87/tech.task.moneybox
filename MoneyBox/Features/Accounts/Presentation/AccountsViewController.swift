@@ -15,14 +15,14 @@ final class AccountsViewController: UIViewController, UITableViewDataSource, UIT
     let nameLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.boldSystemFont(ofSize: 16)
+        label.font = Font.bodyBold
         return label
     }()
 
     let totalPlanValueLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.systemFont(ofSize: 14)
+        label.font = Font.bodyRegular
         return label
     }()
 
@@ -51,10 +51,16 @@ final class AccountsViewController: UIViewController, UITableViewDataSource, UIT
         super.viewDidLoad()
         view.backgroundColor = .white
         setupUI()
+    }
 
+    override func viewWillAppear(_ animation: Bool) {
+        super.viewWillAppear(animation)
+        update()
+    }
+
+    func update() {
         Task {
-            await viewModel?.fetchAccounts()
-            DispatchQueue.main.async { [weak self] in
+            await viewModel?.fetchAccounts { [weak self] in
                 self?.updateUI()
             }
         }
@@ -93,9 +99,11 @@ final class AccountsViewController: UIViewController, UITableViewDataSource, UIT
     }
 
     private func updateUI() {
-        nameLabel.text = viewModel?.nameLabelText
-        totalPlanValueLabel.text = viewModel?.totalPlanValueLabelText
-        tableView.reloadData()
+        Task {
+            nameLabel.text = viewModel?.nameLabelText
+            totalPlanValueLabel.text = viewModel?.totalPlanValueLabelText
+            tableView.reloadData()
+        }
     }
 
     // MARK: - UITableViewDataSource

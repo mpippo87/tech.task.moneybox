@@ -8,7 +8,7 @@
 import Foundation
 import Security
 
-final class KeychainManager {
+public final class KeychainManager {
 
     // MARK: - Properties
 
@@ -16,13 +16,13 @@ final class KeychainManager {
 
     // MARK: - Init
 
-    init(service: String) {
+    public init(service: String) {
         self.service = service
     }
 
     // MARK: - Public Methods
 
-    func save(data: Data, forKey key: String) -> Bool {
+    public func save(data: Data, forKey key: String) -> Bool {
         let query = [
             kSecClass: kSecClassGenericPassword,
             kSecAttrService: service,
@@ -37,7 +37,7 @@ final class KeychainManager {
         return status == errSecSuccess
     }
 
-    func load(forKey key: String) -> Data? {
+    public func load(forKey key: String) -> Data? {
         let query = [
             kSecClass: kSecClassGenericPassword,
             kSecAttrService: service,
@@ -56,7 +56,7 @@ final class KeychainManager {
         return nil
     }
 
-    func delete(forKey key: String) -> Bool {
+    public func delete(forKey key: String) -> Bool {
         let query = [
             kSecClass: kSecClassGenericPassword,
             kSecAttrService: service,

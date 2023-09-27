@@ -14,7 +14,7 @@ protocol AccountsViewModelProtocol {
     var totalPlanValueLabelText: String { get }
     var userAccountsData: [Account] { get }
 
-    func fetchAccounts() async
+    func fetchAccounts(_ completion: @escaping (() -> Void)) async
     func didSelectAccount(at indexPath: IndexPath)
 }
 
@@ -59,8 +59,9 @@ final class AccountsViewModel: AccountsViewModelProtocol {
 
     // MARK: - Methods
 
-    func fetchAccounts() async {
+    func fetchAccounts(_ completion: @escaping (() -> Void)) async {
         accounts = await accountsUseCase.execute()
+        completion()
     }
 
     func didSelectAccount(at indexPath: IndexPath) {
